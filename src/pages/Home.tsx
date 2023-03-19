@@ -5,7 +5,7 @@ import Categories from '../components/Categories/Categories';
 function Home() {
   return (
     <>
-      <Navbar/>
+      <Navbar isAbsolute={true}/>
       <Categories/>
     </>
   );

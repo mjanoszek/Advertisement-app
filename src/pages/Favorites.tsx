@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 function Favorites() {
   return (
-    <Navbar/>
+    <Navbar isAbsolute={false}/>
   );
 }
 
