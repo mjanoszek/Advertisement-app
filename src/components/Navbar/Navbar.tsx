@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+interface NavbarProps {
+  isAbsolute: boolean,
+}
 
-
-function Navbar({isAbsolute}: any) {
+function Navbar({ isAbsolute }: NavbarProps) {
   
   return (
-        <div className={`${isAbsolute ? 'absolute z-10 text-white' : 'relative text-black'} p-5 flex items-center min-w-full `}>
+    <div className={`${isAbsolute ? 'absolute z-10 text-white' : 'relative text-black'} p-5 flex items-center min-w-full `}>
 
       <Link to='/'>
         <h1 className='text-xl sm:text-3xl tracking-wider  font-bold'> XYZ</h1>
