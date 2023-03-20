@@ -28,26 +28,26 @@ function Categories() {
         
         <div className="h-1/4 max-sm:h-0 ">
           <Link to='/Properties'>
-            <img src={propertiesLogo} alt="propertiesLogo" className='lg:opacity-80 hover:opacity-100  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[320px] rounded-md' />
+            <img src={propertiesLogo} alt="propertiesLogo" className='lg:opacity-80 hover:opacity-100  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[310px] rounded-md' />
             <p className='text-center my-2 font-bold '>Properties</p>
           </Link>
         </div>
         <div className="h-1/4 max-sm:h-0 ">
           <Link to='/Cars'>
-            <img src={carsLogo} alt="carsLogo" className='lg:opacity-80 hover:opacity-100  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[320px] rounded-md' />
+            <img src={carsLogo} alt="carsLogo" className='lg:opacity-80 hover:opacity-100  shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[310px] rounded-md' />
             <p className='text-center my-2 font-bold'>Cars</p>
           </Link>
         </div>
         <div className="h-1/4 max-sm:h-0 ">
           <Link to='/Watches'>
-            <img src={watchesLogo} alt="watchesLogo" className='lg:opacity-80 hover:opacity-100 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[320px] rounded-md' />
+            <img src={watchesLogo} alt="watchesLogo" className='lg:opacity-80 hover:opacity-100 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[310px] rounded-md' />
             <p className='text-center my-2 font-bold'>Watches</p>
           </Link>
         </div>
 
         <div className="h-1/4 max-sm:h-0 ">
           <Link to='PrivateJets'>
-            <img src={jetsLogo} alt="jetsLogo" className='lg:opacity-80 hover:opacity-100 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[320px] rounded-md' />
+            <img src={jetsLogo} alt="jetsLogo" className='lg:opacity-80 hover:opacity-100 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] max-sm:h-[130px] max-sm:w-[220px] sm:h-[180px] sm:w-[310px] rounded-md' />
             <p className='text-center my-2 font-bold'>Private Jets</p>
           </Link>
         </div>
