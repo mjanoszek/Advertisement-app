@@ -1,4 +1,4 @@
-import malibuHouse from '../assets/malibu1.jpeg';
+import malibuHouse from '../assets/Images/Properties/Malibu/malibu1.jpeg';
 
 interface AdvertisementItem {
   title: string;
