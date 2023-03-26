@@ -1,2 +1,2 @@
-src/assets/cityVertical.mp4 filter=lfs diff=lfs merge=lfs -text
-src/assets/city.mp4 filter=lfs diff=lfs merge=lfs -text
+src/assets/Videos/* filter=lfs diff=lfs merge=lfs -text
+src/assets/Photos/* filter=lfs diff=lfs merge=lfs -text
