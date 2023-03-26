@@ -19,7 +19,6 @@ function App() {
         <Route path="/PrivateJets" element={<PrivateJets />} />
         <Route path="/Cars" element={<Cars />} />
         <Route path="/Watches" element={<Watches />} />
-
       </Routes>
     </Router>
   );

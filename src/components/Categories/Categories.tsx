@@ -1,10 +1,10 @@
 import React from 'react';
-import propertiesLogo from '../../assets/propertiesLogo.jpeg';
-import carsLogo from '../../assets/carsLogo.jpeg';
-import watchesLogo from '../../assets/watchesLogo.jpeg';
-import jetsLogo from '../../assets/privateJetsLogo.jpeg';
-import city from '../../assets/city.mp4';
-import cityVertical from '../../assets/cityVertical.mp4';
+import propertiesLogo from '../../assets/Images/propertiesLogo.jpeg';
+import carsLogo from '../../assets/Images/carsLogo.jpeg';
+import watchesLogo from '../../assets/Images/watchesLogo.jpeg';
+import jetsLogo from '../../assets/Images/privateJetsLogo.jpeg';
+import city from '../../assets/Videos/city.mp4';
+import cityVertical from '../../assets/Videos/cityVertical.mp4';
 import { Link } from 'react-router-dom';
 
 
