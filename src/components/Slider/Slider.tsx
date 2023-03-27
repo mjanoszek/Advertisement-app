@@ -71,11 +71,20 @@ export const  Slider = () => {
         </AnimatePresence>
         <div className="flex justify-between z-10 h-full w-full ">
 
-          <div className=" bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-[2] left-3 transform scale-x-[-1] " onClick={() => paginate(1)}>
+          <div className=" bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 left-3 transform scale-x-[-1] " onClick={(e) =>  {
+            e.preventDefault();
+            paginate(1);
+          }}
+
+          >
             {'‣'}
         
           </div>
-          <div className=" bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-[2] right-3  " onClick={() => paginate(-1)}>
+          <div className=" bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 right-3  " onClick={(e)  =>  {
+            e.preventDefault();
+            paginate(-1);
+          }
+          }>
             {'‣'}
           </div>
         </div>

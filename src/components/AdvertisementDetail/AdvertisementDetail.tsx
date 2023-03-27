@@ -4,6 +4,7 @@ import { FaBed } from 'react-icons/fa';
 import { FaBath } from 'react-icons/fa';
 import { SlSizeFullscreen } from 'react-icons/sl';
 import { Slider } from '../Slider/Slider';
+import { Link } from 'react-router-dom';
 
 
 function AdvertisementDetail() {
@@ -12,7 +13,7 @@ function AdvertisementDetail() {
   return (
     <>
       {AdvertisementList.map((item, indx) => (
-        <div key={indx} className='flex max-sm:items-left flex-col max-sm:pb-2 w-screen h-fit sm:w-2/5 xl:w-1/4 rounded-md shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]'>
+        <Link to={`/Properties/${item.id}`} key={indx} className='flex max-sm:items-left flex-col max-sm:pb-2 w-screen h-fit sm:w-2/5 xl:w-1/4 m-5 rounded-md shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]'>
           <Slider/>
             
           
@@ -28,7 +29,7 @@ function AdvertisementDetail() {
             </div>
             
           </div>
-        </div>
+        </Link>
       ))}
     </>
   );

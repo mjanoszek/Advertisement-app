@@ -7,6 +7,8 @@ import Properties from './pages/Properties';
 import PrivateJets from './pages/PrivateJets';
 import Cars from './pages/Cars';
 import Watches from './pages/Watches';
+import PropertiesDetails from './pages/PropertiesDetails';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -16,9 +18,11 @@ function App() {
         <Route path="/AddAd" element={<AddAd />} />
         <Route path="/Favorites" element={<Favorites />} />
         <Route path="/Properties" element={<Properties />} />
+        <Route path="/Properties/:id" element={<PropertiesDetails />} />
         <Route path="/PrivateJets" element={<PrivateJets />} />
-        <Route path="/Cars" element={<Cars />} />
         <Route path="/Watches" element={<Watches />} />
+        <Route path="/Cars" element={<Cars />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   );
