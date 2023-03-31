@@ -13,7 +13,7 @@ function AdvertisementDetail() {
     <>
       {AdvertisementList.map((item, indx) => (
         <Link to={`/Properties/${item.id}`} key={indx} className='flex max-sm:items-left flex-col  max-sm:pb-2  xl:w-full rounded-md shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px] w-[250px]  lg:w-[340px] lg:max-w-[340px]'>
-          <Slider image={item.images}/>
+          <Slider image={item.images} isLarge={false}/>
           <div className='px-3 py-2 sm:flex sm:flex-col items-start justify-between gap-5'>
             <p className='max-[375px]:text-sm text-base'>{item.title}</p>
             <div className='flex flex-col'>

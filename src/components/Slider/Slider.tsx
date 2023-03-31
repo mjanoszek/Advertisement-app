@@ -28,7 +28,7 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-export const  Slider = ({ image } ) => {
+export const  Slider = ({ image, isLarge }: any ) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageSource = image;
   const imageIndex = wrap(0, imageSource.length, page);
@@ -50,7 +50,7 @@ export const  Slider = ({ image } ) => {
             initial="enter"
             animate="center"
             exit="exit"
-            className='absolute w-[250px] h-[160px]  lg:w-[340px] lg:h-[215px] lg:max-w-[340px] lg:max-h-[215px]'
+            className={!isLarge ? 'absolute w-[250px] h-[160px]  lg:w-[340px] lg:h-[215px] lg:max-w-[340px] lg:max-h-[215px]' :  ' absolute w-screen' }
             transition={{
               x: { type: 'spring', stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
@@ -69,7 +69,7 @@ export const  Slider = ({ image } ) => {
             }}
           />
         </AnimatePresence>
-        <div className="flex justify-between z-10 h-full w-full ">
+        <div className="flex justify-between z-10 w-full ">
 
           <div className=" bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 left-3 transform scale-x-[-1] " onClick={(e) =>  {
             e.preventDefault();
