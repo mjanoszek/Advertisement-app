@@ -35,12 +35,12 @@ function PropertyDetails({ data }) {
   return (
 
     <div className="flex justify-center items-start gap-10 h-screen w-screen  ">
-      <div className="flex justify-start items-start w-screen flex-col mt-[20vw]">
-        <div className="max-sm:pb-2 xl:w-full rounded-md w-screen ">
+      <div className="flex justify-start items-start w-screen flex-col mt-[20vw] ">
+        <div className="max-sm:pb-2 xl:w-full rounded-md max-[769px]:w-screen  min-[500px]:mb-10 min-[600px]:mb-20 min-[700px]:mb-28">
           <Slider image={data.images} isLarge={true}/>
         </div>
-        <div className="flex justify-center items-center self-center flex-col z-20 m-2 mt-10 gap-5  ">
-          <div className="flex flex-col justify-start items-start self-start">
+        <div className="flex justify-center items-center self-center flex-col z-20 m-2 mt-10  gap-5  ">
+          <div className="flex flex-col justify-start items-start self-start ">
             <p className='font-semibold'>For Sale</p>
             <p className='font-bold text-xl xl:text-2xl'>{data.location}</p>
           </div>
