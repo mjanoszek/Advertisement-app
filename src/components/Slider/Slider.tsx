@@ -50,7 +50,7 @@ export const  Slider = ({ image, isLarge }: any ) => {
             initial="enter"
             animate="center"
             exit="exit"
-            className={!isLarge ? 'absolute w-[250px] h-[160px]  lg:w-[340px] lg:h-[215px] lg:max-w-[340px] lg:max-h-[215px]' :  ' absolute w-screen' }
+            className={!isLarge ? 'absolute w-[250px] h-[160px]  lg:w-[340px] lg:h-[215px] lg:max-w-[340px] lg:max-h-[215px] ' :  ' absolute w-screen' }
             transition={{
               x: { type: 'spring', stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
