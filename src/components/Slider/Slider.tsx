@@ -39,8 +39,8 @@ export const  Slider = ({ image, isLarge, isMobile }: any ) => {
 
 
   return (
-    <div className="relative flex-wrap mb-16 min-[360px]:mb-20 lg:mb-28">
-      <div className="flex justify-center items-center relative px-2">
+    <div className="relative flex-wrap mb-16 min-[360px]:mb-20 lg:mb-28 ">
+      <div className="flex justify-center items-center relative px-2 ">
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
             key={page}
