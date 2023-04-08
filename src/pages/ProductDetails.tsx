@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { getElementById }  from '../data/AdvertisementListProperties';
-import PropertyDetails from '../components/PropertyDetails/PropertyDetails';
+import ProductDetails from '../components/ProductDetails/ProductDetails';
 
 function PropertiesDetails() {
   const { id } = useParams();
@@ -12,7 +12,7 @@ function PropertiesDetails() {
 
   return (
     <>
-      <PropertyDetails data={particularElement} />
+      <ProductDetails data={particularElement} />
       
     </>
   );
