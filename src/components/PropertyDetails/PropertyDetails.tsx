@@ -33,7 +33,7 @@ function PropertyDetails({ data }) {
   );
 
 
-  const isMobile = useMediaQuery({ maxWidth: 630 });
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const API_KEY = import.meta.env.VITE_GEO_CODE_API_KEY;
 
@@ -91,7 +91,7 @@ function PropertyDetails({ data }) {
           </div>
            
 
-          <form className='hidden lg:flex flex-col self-center text-center gap-5 mt-10 p-3 max-w-[250px] h-fit border border-black rounded-md mx-5'>
+          <form className='hidden lg:flex flex-col self-center text-center gap-5 mt-10 p-3 max-w-[250px] h-fit border border-gray-400 rounded-md ml-5 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]'>
             <p className='font-bold text-xl xl:text-2xl p-2'>Request for more information</p>
             <input type="text" className='border border-black rounded-sm p-2' placeholder='Name'/>
             <input type="email" className='border border-black rounded-sm p-2' placeholder='Email'/>

@@ -50,7 +50,15 @@ export const  Slider = ({ image, isLarge, isMobile }: any ) => {
             initial="enter"
             animate="center"
             exit="exit"
-            className={!isLarge ? 'absolute w-[250px] h-[160px]  lg:w-[340px] lg:h-[215px] lg:max-w-full lg:max-h-[215px] ' :  'shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] rounded-xl absolute w-screen' }
+            className={
+              `absolute shadow-[0px_4px_16px_rgba(17,17,26,0.1),_0px_8px_24px_rgba(17,17,26,0.1),_0px_16px_56px_rgba(17,17,26,0.1)] 
+              ${(!isLarge && isMobile) &&  'rounded-t-md w-screen '}
+              ${(isLarge && isMobile) && 'rounded-none '}
+              ${!isLarge && 'lg:h-[215px] lg:max-h-[215px] rounded-t-md ' }
+              ${(isLarge && !isMobile) && 'shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px] rounded-xl w-screen'}`
+            }
+
+
             transition={{
               x: { type: 'spring', stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
@@ -69,7 +77,7 @@ export const  Slider = ({ image, isLarge, isMobile }: any ) => {
             }}
           />
         </AnimatePresence>
-        <div className="flex justify-between z-10 w-full ">
+        <div className="flex justify-between z-10 w-full  ">
 
           <div className=" bg-white rounded-full w-10 h-10 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 left-3 transform scale-x-[-1] " onClick={(e) =>  {
             e.preventDefault();
