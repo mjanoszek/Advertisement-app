@@ -7,7 +7,7 @@ import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Navbar/Navbar';
 
 
-function PropertyDetails({ data }) {
+function ProductDetails({ data }) {
 
   const [showMore, setShowMore] = useState(false);
 
@@ -121,4 +121,4 @@ function PropertyDetails({ data }) {
 
 
 
-export default PropertyDetails;
+export default ProductDetails;

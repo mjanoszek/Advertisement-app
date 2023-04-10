@@ -7,7 +7,7 @@ import Properties from './pages/Properties';
 import PrivateJets from './pages/PrivateJets';
 import Cars from './pages/Cars';
 import Watches from './pages/Watches';
-import PropertiesDetails from './pages/ProductDetails';
+import PropertiesDetails from './pages/ProductProfile';
 import NotFound from './pages/NotFound';
 
 function App() {

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getElementById }  from '../data/AdvertisementListProperties';
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 
-function PropertiesDetails() {
+function ProductProfile() {
   const { id } = useParams();
 
   const particularElement = getElementById(Number(id));
@@ -18,4 +18,4 @@ function PropertiesDetails() {
   );
 }
 
-export default PropertiesDetails;
+export default ProductProfile;
