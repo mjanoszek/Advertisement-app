@@ -3,6 +3,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { wrap } from 'popmotion';
 
 
+interface SliderProps {
+  image: string[];
+  isLarge: boolean;
+  isMobile: boolean
+
+}
+
 const variants = {
   enter: (direction: number) => {
     return {
@@ -28,7 +35,7 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-export const  Slider = ({ image, isLarge, isMobile }: any ) => {
+export const  Slider = ({ image, isLarge, isMobile }: SliderProps ) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageSource = image;
   const imageIndex = wrap(0, imageSource.length, page);
@@ -46,7 +53,7 @@ export const  Slider = ({ image, isLarge, isMobile }: any ) => {
             key={page}
             src={imageSource[imageIndex]}
             custom={direction}
-            variants={isMobile && variants}
+            variants={isMobile ? variants : undefined}
             initial="enter"
             animate="center"
             exit="exit"

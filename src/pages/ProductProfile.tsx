@@ -8,7 +8,6 @@ function ProductProfile() {
 
   const particularElement = getElementById(Number(id));
 
-  console.log(particularElement);
   return (
     <>
       {particularElement ? (
