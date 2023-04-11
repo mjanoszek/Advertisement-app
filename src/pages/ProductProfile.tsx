@@ -8,12 +8,14 @@ function ProductProfile() {
 
   const particularElement = getElementById(Number(id));
 
-
-
+  console.log(particularElement);
   return (
     <>
-      <ProductDetails data={particularElement} />
-      
+      {particularElement ? (
+        <ProductDetails data={particularElement} />
+      ) : (
+        <p>Loading...</p>
+      )}      
     </>
   );
 }

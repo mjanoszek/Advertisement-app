@@ -7,7 +7,20 @@ import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Navbar/Navbar';
 
 
-function ProductDetails({ data }) {
+interface ProductDetail {
+  id: number;
+  title: string;
+  beds: string;
+  baths: string;
+  area: string;
+  location: string;
+  price: string;
+  description: string;
+  images: string[];
+}
+
+
+function ProductDetails({ data }: { data: ProductDetail }) {
 
   const [showMore, setShowMore] = useState(false);
 
