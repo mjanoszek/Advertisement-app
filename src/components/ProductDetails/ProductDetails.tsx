@@ -84,7 +84,7 @@ function ProductDetails({ data }: { data: ProductDetail }) {
 
 
 
-          <div className="flex self-center z-20 mt-[7vw] lg:mt-[8vw] xl:mt-[12vw] gap-5 mx-2">
+          <div className="flex max-md:flex-col self-center z-20 mt-[10vw] lg:mt-[8vw] xl:mt-[12vw] gap-5 mx-6 lg:mx-0">
 
         
             <div className="flex flex-col self-start gap-2 ">
@@ -101,17 +101,17 @@ function ProductDetails({ data }: { data: ProductDetail }) {
                 <p className='text-sm sm:text-md '>{data.description}</p>
               </div>
               <div className='flex items-center justify-center mt-5'>
-                <iframe className='rounded-xl' width="100%" height="400" src={`https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude},${longitude},${latitude}&amp;layer=mapnik`}></iframe>
+                <iframe className='rounded-xl h-[350px]' width="100%"   src={`https://www.openstreetmap.org/export/embed.html?bbox=${longitude},${latitude},${longitude},${latitude}&amp;layer=mapnik`}></iframe>
               </div>
             </div>
            
 
-            <form className='hidden lg:flex flex-col self-center text-center gap-5 mt-10 p-3 max-w-[250px] h-fit border border-gray-400 rounded-md ml-5 shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]'>
+            <form className='flex flex-col self-center text-center gap-2 lg:gap-5 mt-10 lg:ml-5 p-3 max-w-[250px] h-fit border border-gray-400 rounded-md shadow-[0px_10px_1px_rgba(221,_221,_221,_1),_0_10px_20px_rgba(204,_204,_204,_1)]'>
               <p className='font-bold text-xl xl:text-2xl p-2'>Request for more information</p>
               <input type="text" className='border border-black rounded-sm p-2' placeholder='Name'/>
               <input type="email" className='border border-black rounded-sm p-2' placeholder='Email'/>
               <input type='tel' className='border border-black rounded-sm p-2' placeholder='Your phone'/>
-              <textarea cols={30} rows={5} className='border border-black rounded-sm p-2' placeholder='Write a message'></textarea>
+              <textarea  className="resize rounded-sm border border-black p-2" rows="4" placeholder='Write a message'></textarea>
               <input type="submit" value="Send" className='border border-black rounded-sm w-1/3 p-1 self-center' />
               <div>
                 {showMore ? textToShow : truncatedText}
