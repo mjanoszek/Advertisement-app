@@ -70,27 +70,28 @@ function ProductDetails({ data }: { data: ProductDetail }) {
 
     fetchData();
   }, [data.location]);
-  
-  
-  
+
+ 
+
   return (
     <>
       {!isMobile && <Navbar isAbsolute={false} />}
-      <div className='flex justify-center items-start h-screen lg:px-14 mt-[20vw] mb-[14vw]'>
-        <div className="flex justify-center items-center w-screen flex-col lg:w-5/6 xl:w-4/6 lg:items-start lg:m-10 ">
-          <div className="max-sm:pb-2 xl:w-full rounded-md  w-screen  lg:w-full min-[500px]:mb-10 min-[600px]:mb-20 min-[700px]:mb-28 min-[800px]:mb-48 lg:mb-14">
+      <div className='flex justify-center items-start h-screen lg:px-14  mt-[20vw]'>
+        <div className="flex justify-center items-center w-screen flex-col xl:w-screen lg:items-start lg:mt-10 xl:mt-16">
+          <div className="w-screen min-[500px]:mb-10 lg:mb-24">
             <Slider image={data.images} isLarge={true} isMobile={isMobile}/>
+           
           </div>
 
 
 
-          <div className="flex max-md:flex-col self-center z-20 mt-[10vw] lg:mt-[8vw] xl:mt-[12vw] gap-5 mx-6 lg:mx-0">
+          <div className="flex max-md:flex-col self-center z-20 mt-[10vw] lg:mt-[5vw] xl:mt-[12vw] 2xl:mt-[15vw] gap-5 mx-2 md:mx-8 ">
 
         
-            <div className="flex flex-col self-start gap-2 ">
-              <p className='font-bold text-xl xl:text-2xl'>{data.location}</p>
-              <p className='font-semibold'>For Sale</p>
-              <p>{data.price}</p>
+            <div className="flex flex-col self-start gap-2">
+              <p className='text-xl xl:text-2xl'>{data.location}</p>
+              <p className='font-semibold '>For Sale</p>
+              <p className='lg:text-xl'>{data.price}</p>
               <div className="flex  flex-row gap-5">
                 <p className='flex gap-2 items-center'><FaBath/>{data.beds}</p>
                 <p className='flex gap-2 items-center'><FaBed/>{data.baths}</p>

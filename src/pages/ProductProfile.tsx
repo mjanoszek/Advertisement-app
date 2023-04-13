@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getElementById }  from '../data/AdvertisementListProperties';
 import ProductDetails from '../components/ProductDetails/ProductDetails';
 
+
 function ProductProfile() {
   const { id } = useParams();
 
@@ -10,6 +11,7 @@ function ProductProfile() {
 
   return (
     <>
+
       {particularElement ? (
         <ProductDetails data={particularElement} />
       ) : (

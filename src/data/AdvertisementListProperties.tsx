@@ -1,7 +1,5 @@
-import malibuHouse from '../assets/Images/Properties/Malibu/malibu1.jpeg';
-import floridaHouse from '../assets/Images/Properties/Florida/florida1.jpeg';
-import { malibu } from '../assets/Images/Properties/Malibu/malibu';
-import { florida } from '../assets/Images/Properties/Florida/florida';
+import bostonHouse from '../assets/Images/Properties/Boston/boston1.jpeg';
+import { boston } from '../assets/Images/Properties/Boston/boston';
 
 interface AdvertisementItem {
   id: number;
@@ -18,8 +16,7 @@ interface AdvertisementItem {
 
 
 export const AdvertisementList: AdvertisementItem[] = [
-  { id: 1, title: 'Single Family Residence', beds: '3 beds', baths: '3 baths', area: '5507 ft²', image: malibuHouse, images: malibu,  location: '28034 Sea Lane Dr MALIBU, CA, US', price: '$55,000,000', description: 'Residence, Modern - Malibu, CA Located in a gated community on a private road, this modern estate designed by architect William Hefner embraces the Malibu lifestyle from the moment you arrive! With 88 feet of beach frontage, its envious location is steps from the beach and boasts 180 views of the ocean from the expansive deck. As you enter through the pivot glass door into the stone foyer with interiors designed by Billy Cotton, the spacious living room draws you in to capture the views as you relax in front of the fireplace.' },
-  { id: 2, title: 'Single Family Residence', beds: '4 beds', baths: '7 baths', area: '11589 ft²', image: floridaHouse, images: florida, location: '1005 NE Doubloon Drive Stuart, FL, US', price: '$18,500,000', description: 'Welcome to one of the most iconic homes on the Treasure Coast. Situated on a 2.3-plus-acre double lot in Galleon Bay, the property offers 239 feet of unobstructed oceanfront. Completed in 2019, this home marries contemporary design with utter livability. The second-floor entry delivers views of the Atlantic Ocean via a two-story glass wall. Open-concept kitchen with oversized island and private service. The main dining and living rooms maximize all views. Two additional rooms flex as offices or bedrooms. River and Ocean pools with heated spa. The third-level main suite features a barista station, fireplace, living wall, flow-over tub with aqua pillar, glass shower, and massive boutique closets.' },
+  { id: 1, title: 'The Millennium Residences at Winthrop Center', beds: '3 beds', baths: '3 baths', area: '1989 ft²', image: bostonHouse, images: boston,  location: 'Boston, MA, United States, 240 Devonshire Street', price: '$4,875,000', description: 'The Residences at Winthrop Center: proof that “living centered” is the ultimate luxury. These spectacular residences currently rising in the center of the city will sit atop what will be the largest Passive House office building in the world. They’ll feature climate-positive design and panoramic harbor and city views. The best news of all? Residential sales have officially commenced! The Residences at Winthrop Center lifestyle will begin with Millennium’s signature five-star service and an unprecedented 50,000+ sq. ft. of total luxury amenity space spanning two floors. This includes The Club, with expansive owner’s lounge, two sprawling outdoor terraces, screening room, bar, and more, all supported by Millennium’s exclusive social calendar, La Vie®. The private FLX Wellness Sanctuary will offer state-of-the-art fitness equipment, Pilates and yoga, tranquil treatment and recovery rooms, and a 75-foot indoor lap pool, among other special features.' },
  
 
 ];
