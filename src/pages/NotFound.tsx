@@ -37,7 +37,6 @@ function NotFound() {
         <h1 className='font-bold text-3xl'>NOT FOUND 404</h1>
         {!error && <img src={gif} alt="notfound" className='h-[250px] md:h-[400px] xl:h-[550px]  shadow-[rgba(0,_0,_0,_0.4)_0px_30px_90px]' />}
         {error && <p className='font-medium text-center'>{error.toString()}</p>}
-
       </div>
     </>
   );

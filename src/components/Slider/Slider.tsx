@@ -60,6 +60,7 @@ export const  Slider = ({ image, isLarge, isMobile }: SliderProps ) => {
             className={
               `absolute shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]
               ${(!isLarge && isMobile) &&  'rounded-t-md w-screen '}
+              ${(!isLarge && !isMobile) &&  'h-[150px] max-h-[150px]'}
               ${(isLarge && isMobile) && 'rounded-none max-[375px]:h-[200px]'}
               ${!isLarge && 'lg:h-[215px] lg:max-h-[215px] rounded-t-md ' }
               ${(isLarge && !isMobile) && 'rounded-none w-screen'}`
