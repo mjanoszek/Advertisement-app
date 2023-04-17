@@ -13,8 +13,6 @@ function NotFound() {
     'The Office',
     'Gym Fails',
     'Breaking Bad',
-    'wtf',
-    'rofl',
   ];
   const randomGif = funnyGifTags[Math.floor(Math.random() * funnyGifTags.length)];
 
