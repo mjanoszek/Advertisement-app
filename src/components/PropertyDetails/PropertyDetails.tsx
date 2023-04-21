@@ -7,21 +7,9 @@ import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Navbar/Navbar';
 
 
-interface ProductDetail {
-  id: number;
-  title: string;
-  beds: string;
-  baths: string;
-  area: string;
-  location: string;
-  price: string;
-  description: string;
-  images: string[];
-}
 
 
-function ProductDetails({ data }: { data: ProductDetail }) {
-
+function PropertyDetails({ data }) {
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => setShowMore(!showMore);
@@ -112,7 +100,7 @@ function ProductDetails({ data }: { data: ProductDetail }) {
               <input type="text" className='border border-black rounded-sm p-2' placeholder='Name'/>
               <input type="email" className='border border-black rounded-sm p-2' placeholder='Email'/>
               <input type='tel' className='border border-black rounded-sm p-2' placeholder='Your phone'/>
-              <textarea  className="resize rounded-sm border border-black p-2" rows="4" placeholder='Write a message'></textarea>
+              <textarea  className="resize rounded-sm border border-black p-2" rows={parseInt('4')} placeholder='Write a message'></textarea>
               <input type="submit" value="Send" className='border border-black rounded-sm w-1/3 p-1 self-center' />
               <div>
                 {showMore ? textToShow : truncatedText}
@@ -134,6 +122,6 @@ function ProductDetails({ data }: { data: ProductDetail }) {
 
 
 
-export default ProductDetails;
+export default PropertyDetails;
 
 

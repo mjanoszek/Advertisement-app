@@ -7,7 +7,7 @@ function Properties() {
   return (
     <>
       <Navbar isAbsolute={false}/>
-      <AdvertisementCard/>
+      <AdvertisementCard type='properties'/>
     </>
   );
 }
