@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactPlayer from 'react-player';
 import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Navbar/Navbar';
 import plaid1Mobile from '../../assets/Images/Cars/Tesla/plaid1Mobile.jpeg';
@@ -9,8 +10,38 @@ import plaidVideo3 from '../../assets/Images/Cars/Tesla/plaidVideo3.mp4';
 import plaidVideo4 from '../../assets/Images/Cars/Tesla/plaidVideo4.mp4';
 import plaidVideo5 from '../../assets/Images/Cars/Tesla/plaidVideo5.mp4';
 
+
 function CarDetails({ data }) {
 
+  const teslaData = [
+    {
+      url: plaidVideo1,
+      heading: 'Cinematic Experience',
+      text: 'A 17” touchscreen with left-right tilt offers 2200 x 1300 resolution, true colors and exceptional responsiveness for gaming, movies and more.',
+    },
+    {
+      url: plaidVideo2,
+      text: 'dsf',
+    },
+    {
+      url: plaidVideo3,
+      text: 'Model Y',
+    },
+    {
+      url: plaidVideo4,
+      text: 'Model S Plaid',
+    },
+    {
+      url: plaidVideo5,
+      text: 'cxvcxvcd',
+    },
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  const handleVideoChange = (indx: number) => {
+    setCurrent(indx);
+  };
  
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -52,25 +83,41 @@ function CarDetails({ data }) {
       <div className="flex justify-center flex-col h-screen bg-black" >
         <div className="flex flex-col text-center self-center text-white mt-36 h-screen ">
           <div className="flex flex-col gap-10">
-            <video autoPlay muted controls={false}>
-              <source src={plaidVideo1} type="video/mp4"  />
-            </video>
+            <div className="relative ">
+              <ReactPlayer
+                className="h-full w-full object-cover"
+                url={plaidVideo1}
+                playing={true}
+                muted={true}
+                loop={true}
+                width="100%"
+                height="100%"
+              />
 
-            <video autoPlay muted controls={false}> 
-              <source src={plaidVideo2} type="video/mp4"  />
-            </video>
+              
+              <div className="flex flex-col gap-10">
+                <div className="flex justify-start px-2">
+                  {teslaData.map((item, indx) => (
+                    <button
+                      key={indx}
+                      className={`mx-2 rounded-full h-4 w-4 border-2 border-transparent bg-gray-500 ${
+                        indx === current && 'bg-gray-100'
+                      }`}
+                      onClick={() => handleVideoChange(indx)}
+                    />
+                  ))}
+                </div>
+                <div className="flex flex-col justify-start bg-red-500 bg-opacity-50 p-6">
+                  <p className="text-md font-bold text-white">{teslaData[current].heading}</p>
+                  <p className="text-xs font-bold text-white">{teslaData[current].text}</p>
+                </div>
+              </div>
+            </div>
 
-            <video autoPlay muted controls={false}>
-              <source src={plaidVideo3} type="video/mp4"  />
-            </video>
 
-            <video autoPlay muted controls={false}>
-              <source src={plaidVideo4} type="video/mp4"  />
-            </video>
+       
 
-            <video autoPlay muted controls={false}>
-              <source src={plaidVideo5} type="video/mp4"  />
-            </video>
+           
           </div>
         </div>
       </div>
