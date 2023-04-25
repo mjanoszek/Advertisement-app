@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
-import { useMediaQuery } from 'react-responsive';
+// import { useMediaQuery } from 'react-responsive';
+import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from '../Navbar/Navbar';
 import plaid1Mobile from '../../assets/Images/Cars/Tesla/plaid1Mobile.jpeg';
 import plaid3Mobile from '../../assets/Images/Cars/Tesla/plaid3Mobile.jpeg';
@@ -21,19 +22,23 @@ function CarDetails({ data }) {
     },
     {
       url: plaidVideo2,
-      text: 'dsf',
+      heading: 'Yoke Steering',
+      text: 'A bold new approach gives you a true connection to Model S, offering better steering feel and unobstructed views of your dash and the road ahead. Tap the brake and Model S automatically selects the correct direction to start your trip.',
     },
     {
       url: plaidVideo3,
-      text: 'Model Y',
+      heading: 'Perfect Environment',
+      text: 'Air vents are hidden throughout the cabin, while tri-zone temperature controls, ventilated seats and HEPA filtration deliver the perfect environment.',
     },
     {
       url: plaidVideo4,
-      text: 'Model S Plaid',
+      heading: 'Redesigned Second Row',
+      text: 'Seating for three adults, with extra legroom, headroom and a stowable armrest with integrated storage and wireless charging.',
     },
     {
       url: plaidVideo5,
-      text: 'cxvcxvcd',
+      heading: 'Console-Grade Gaming',
+      text: 'Up to 10 teraflops of processing power unlock in-car gaming on-par with today’s newest consoles. Play from any seat with wireless controller and headset compatibility.',
     },
   ];
 
@@ -44,7 +49,7 @@ function CarDetails({ data }) {
   };
  
 
-  const isMobile = useMediaQuery({ maxWidth: 768 });
+  // const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
     <>
@@ -81,35 +86,66 @@ function CarDetails({ data }) {
 
 
       <div className="flex justify-center flex-col h-screen bg-black" >
-        <div className="flex flex-col text-center self-center text-white mt-36 h-screen ">
-          <div className="flex flex-col gap-10">
-            <div className="relative ">
+        <div className="flex flex-col text-center self-center text-white mt-36 h-screen  ">
+          <div className="flex flex-col gap-10 ">
+            <div className="relative">
               <ReactPlayer
-                className="h-full w-full object-cover"
-                url={plaidVideo1}
+                className="h-full w-full object-cover "
+                url={teslaData[current].url}
                 playing={true}
                 muted={true}
                 loop={true}
-                width="100%"
-                height="100%"
+                width='100%'
+                height='100%'
               />
 
               
-              <div className="flex flex-col gap-10">
-                <div className="flex justify-start px-2">
+              <div className="flex flex-col justify-start gap-10 absolute top-64">
+                <div className="flex justify-start px-4 ">
                   {teslaData.map((item, indx) => (
-                    <button
-                      key={indx}
-                      className={`mx-2 rounded-full h-4 w-4 border-2 border-transparent bg-gray-500 ${
-                        indx === current && 'bg-gray-100'
-                      }`}
-                      onClick={() => handleVideoChange(indx)}
-                    />
+                    <>
+
+                      <button
+                        key={indx}
+                        className={`mx-2 rounded-full h-3 w-3 border-2 border-transparent bg-gray-500   ${
+                          indx === current && 'bg-gray-100'
+                        }`}
+                        onClick={() => {
+                          handleVideoChange(indx);
+                        }}
+                      
+                      />
+                      {indx === current ? (
+                        <motion.div className="underline bg-white w-3 h-3 rounded-full " layoutId="underline" />
+                      ) : null}
+                    </>
+
                   ))}
+
+
+
+                  {/* {tabs.map((item) => (
+                    <li
+                      key={item.label}
+                      className={item === selectedTab ? 'selected' : ''}
+                      onClick={() => setSelectedTab(item)}
+                    >
+                      {`${item.icon} ${item.label}`}
+                      {item === selectedTab ? (
+                        <motion.div className="underline" layoutId="underline" />
+                      ) : null}
+                    </li>
+                  ))} */}
+
+
+
+
+
+
                 </div>
-                <div className="flex flex-col justify-start bg-red-500 bg-opacity-50 p-6">
-                  <p className="text-md font-bold text-white">{teslaData[current].heading}</p>
-                  <p className="text-xs font-bold text-white">{teslaData[current].text}</p>
+                <div className="flex flex-col text-left bg-opacity-50 px-6 gap-4 ">
+                  <p className="text-md font-medium text-white">{teslaData[current].heading}</p>
+                  <p className="text-sm text-white">{teslaData[current].text}</p>
                 </div>
               </div>
             </div>
@@ -117,7 +153,7 @@ function CarDetails({ data }) {
 
        
 
-           
+        
           </div>
         </div>
       </div>
