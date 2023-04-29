@@ -1,23 +1,42 @@
 import React, { useState } from 'react';
 import ReactPlayer from 'react-player';
-// import { useMediaQuery } from 'react-responsive';
-import { motion, AnimateSharedLayout, AnimatePresence } from 'framer-motion';
+import { motion,  AnimatePresence  } from 'framer-motion';
+import { useSpring, animated } from '@react-spring/web';
+import { useInView } from 'react-intersection-observer';
+
 import Navbar from '../Navbar/Navbar';
-import plaid1Mobile from '../../assets/Images/Cars/Tesla/plaid1Mobile.jpeg';
-import plaid3Mobile from '../../assets/Images/Cars/Tesla/plaid3Mobile.jpeg';
-import plaidVideo1 from '../../assets/Images/Cars/Tesla/plaidVideo1.mp4';
-import plaidVideo2 from '../../assets/Images/Cars/Tesla/plaidVideo2.mp4';
-import plaidVideo3 from '../../assets/Images/Cars/Tesla/plaidVideo3.mp4';
-import plaidVideo4 from '../../assets/Images/Cars/Tesla/plaidVideo4.mp4';
-import plaidVideo5 from '../../assets/Images/Cars/Tesla/plaidVideo5.mp4';
+import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile } from '../../assets/Images/Cars/Tesla/plaidImport';
+
+// import { useMediaQuery } from 'react-responsive';
+
+
 
 
 function CarDetails({ data }) {
-  const [selected, setSelected] = useState(0);
+
+ 
+  const [ref, inView] = useInView({ threshold: 0.5 });
+
+  const animationProps = useSpring({
+    opacity: inView ? 1 : 0,
+    transform: inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
 
 
 
 
+
+  const [current, setCurrent] = useState(0);
+
+  const handleVideoChange = (indx: number) => {
+    setCurrent(indx);
+  };
+ 
+
+  // const isMobile = useMediaQuery({ maxWidth: 768 });
+
+  
   const teslaData = [
     {
       url: plaidVideo1,
@@ -46,15 +65,7 @@ function CarDetails({ data }) {
     },
   ];
 
-  const [current, setCurrent] = useState(0);
-
-  const handleVideoChange = (indx: number) => {
-    setCurrent(indx);
-  };
- 
-
-  // const isMobile = useMediaQuery({ maxWidth: 768 });
-
+  
   return (
     <>
       <Navbar isAbsolute={true} />
@@ -119,7 +130,7 @@ function CarDetails({ data }) {
              
                 
               
-          <div className="flex flex-col justify-start gap-10 mt-64 ">
+          <div className="flex flex-col justify-start gap-10 mt-64">
             <div className="flex justify-start px-4">
               {teslaData.map((item, indx) => (
                 <div key={indx} className="relative h-full">
@@ -158,12 +169,39 @@ function CarDetails({ data }) {
               <p className="text-md font-medium text-white">{teslaData[current].heading}</p>
               <p className="text-sm text-white">{teslaData[current].text}</p>
             </div>
+
+
+            <animated.img
+              ref={ref}
+              src={plaid6Mobile}
+              style={animationProps}
+            />
+            <animated.div style={animationProps} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+              <p className="text-md font-medium text-white">Stay Connected</p>
+              <p className="text-sm text-white">Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging.</p>
+            </animated.div>
+            
+
+            <animated.div style={animationProps}>
+              <ReactPlayer
+                className="h-full w-full object-cover"
+                url={plaidVideo6}
+                playing={true}
+                muted={true}
+                loop={true}
+                width='100%'
+                height='100%'
+              />
+            </animated.div>
           </div>
-
-
 
           
         </div>
+       
+         
+      
+
+       
       </div>
       
     
