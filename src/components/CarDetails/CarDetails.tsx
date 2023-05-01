@@ -5,7 +5,7 @@ import { useSpring, animated } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 
 import Navbar from '../Navbar/Navbar';
-import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile } from '../../assets/Images/Cars/Tesla/plaidImport';
+import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7 } from '../../assets/Images/Cars/Tesla/plaidImport';
 
 // import { useMediaQuery } from 'react-responsive';
 
@@ -15,14 +15,50 @@ import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plai
 function CarDetails({ data }) {
 
  
-  const [ref, inView] = useInView({ threshold: 0.5 });
+  const imgRef = useInView({ threshold: 0.5 });
+  const textRef1 = useInView({ threshold: 0.5 });
+  const videoRef = useInView({ threshold: 0.5 });
+  const textRef2 = useInView({ threshold: 0.5 });
+  const imgRef2 = useInView({ threshold: 0.5 });
+  const textRef3 = useInView({ threshold: 0.5 });
 
-  const animationProps = useSpring({
-    opacity: inView ? 1 : 0,
-    transform: inView ? 'translateY(0)' : 'translateY(50px)',
+  const imgAnimation = useSpring({
+    opacity: imgRef.inView ? 1 : 0,
+    transform: imgRef.inView ? 'translateY(0)' : 'translateY(50px)',
     config: { mass: 1, tension: 120, friction: 14 },
   });
 
+ 
+  const textAnimation1 = useSpring({
+    opacity: textRef1.inView ? 1 : 0,
+    transform: textRef1.inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
+
+  const videoAnimation = useSpring({
+    opacity: videoRef.inView ? 1 : 0,
+    transform: videoRef.inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
+
+
+  const textAnimation2 = useSpring({
+    opacity: textRef2.inView ? 1 : 0,
+    transform: textRef2.inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
+
+  const imgAnimation2 = useSpring({
+    opacity: imgRef2.inView ? 1 : 0,
+    transform: imgRef2.inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
+
+  const textAnimation3 = useSpring({
+    opacity: textRef3.inView ? 1 : 0,
+    transform: textRef3.inView ? 'translateY(0)' : 'translateY(50px)',
+    config: { mass: 1, tension: 120, friction: 14 },
+  });
 
 
 
@@ -170,29 +206,46 @@ function CarDetails({ data }) {
               <p className="text-sm text-white">{teslaData[current].text}</p>
             </div>
 
-
-            <animated.img
-              ref={ref}
-              src={plaid6Mobile}
-              style={animationProps}
-            />
-            <animated.div style={animationProps} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
-              <p className="text-md font-medium text-white">Stay Connected</p>
-              <p className="text-sm text-white">Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging.</p>
-            </animated.div>
-            
-
-            <animated.div style={animationProps}>
-              <ReactPlayer
-                className="h-full w-full object-cover"
-                url={plaidVideo6}
-                playing={true}
-                muted={true}
-                loop={true}
-                width='100%'
-                height='100%'
+            <div className="flex flex-col bg-black gap-14 py-24">
+              <animated.img
+                ref={imgRef.ref}
+                src={plaid6Mobile}
+                style={imgAnimation}
               />
-            </animated.div>
+
+              <animated.div style={textAnimation1} ref={textRef1.ref} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+                <p className="text-md font-medium text-white">Stay Connected</p>
+                <p className="text-sm text-white">Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging.</p>
+              </animated.div>
+
+              <animated.div style={videoAnimation} ref={videoRef.ref}>
+                <ReactPlayer
+                  className="h-full w-full object-cover"
+                  url={plaidVideo6}
+                  playing={true}
+                  muted={true}
+                  loop={true}
+                  width='100%'
+                  height='100%'
+                />
+              </animated.div>
+              <animated.div style={textAnimation2} ref={textRef2.ref} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+                <p className="text-md font-medium text-white">Immersive Sound</p>
+                <p className="text-sm text-white">A 22-speaker, 960-watt audio system with Active Road Noise Reduction offers immersive listening and studio-grade sound quality.</p>
+              </animated.div>
+
+
+              <animated.img
+                ref={imgRef2.ref}
+                src={plaid7}
+                style={imgAnimation2}
+              />
+
+              <animated.div style={textAnimation3} ref={textRef3.ref} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+                <p className="text-md font-medium text-white">Room for Everything</p>
+                <p className="text-sm text-white">With front and rear trunks and fold-flat seats you can fit your bike without taking the wheel off—and your luggage too.</p>
+              </animated.div>
+            </div>
           </div>
 
           
