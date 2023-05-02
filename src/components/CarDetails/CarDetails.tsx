@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
-import { motion,  AnimatePresence  } from 'framer-motion';
-import { useSpring, animated } from '@react-spring/web';
+import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
+// import { useSpring, animated } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 
 import Navbar from '../Navbar/Navbar';
-import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7 } from '../../assets/Images/Cars/Tesla/plaidImport';
+import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7, plaid5Mobile } from '../../assets/Images/Cars/Tesla/plaidImport';
 
 // import { useMediaQuery } from 'react-responsive';
 
@@ -14,53 +14,69 @@ import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plai
 
 function CarDetails({ data }) {
 
+  const [imgRef, inViewImg] = useInView({ threshold: 0.5 });
+  const [imgRef2, inViewImg2] = useInView({ threshold: 0.5 });
+  const [textRef1, inViewText] = useInView({ threshold: 0.5 });
+  const [textRef2, inViewText2] = useInView({ threshold: 0.5 });
+  const [textRef3, inViewText3] = useInView({ threshold: 0.5 });
+  const [videoRef, inViewVideo] = useInView({ threshold: 0.5 });
+
+  const animation1 = useAnimation();
+  const animation2 = useAnimation();
+  const animation3 = useAnimation();
+  const animation4 = useAnimation();
+  const animation5 = useAnimation();
+  const animation6 = useAnimation();
+
+  useEffect(() => {
+    if (inViewText3) {
+      animation1.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+    } else {
+      animation1.start({ opacity: 0, y: 50 });
+    }
+  }, [animation1, inViewText3]);
+
+  useEffect(() => {
+    if (inViewImg) {
+      animation2.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+    } else {
+      animation2.start({ opacity: 0, y: 50 });
+    }
+  }, [animation2, inViewImg]);
+
+  useEffect(() => {
+    if (inViewText) {
+      animation3.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+    } else {
+      animation3.start({ opacity: 0, y: 50 });
+    }
+  }, [animation3, inViewText]);
+
+  useEffect(() => {
+    if (inViewVideo) {
+      animation4.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+    } else {
+      animation4.start({ opacity: 0, y: 50 });
+    }
+  }, [animation4, inViewVideo]);
+
+  useEffect(() => {
+    if (inViewText2) {
+      animation5.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+    } else {
+      animation5.start({ opacity: 0, y: 50 });
+    }
+  }, [animation5, inViewText2]);
+
+  useEffect(() => {
+    if (inViewImg2) {
+      animation6.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+    } else {
+      animation6.start({ opacity: 0, y: 50 });
+    }
+  }, [animation6, inViewImg2]);
+
  
-  const imgRef = useInView({ threshold: 0.5 });
-  const textRef1 = useInView({ threshold: 0.5 });
-  const videoRef = useInView({ threshold: 0.5 });
-  const textRef2 = useInView({ threshold: 0.5 });
-  const imgRef2 = useInView({ threshold: 0.5 });
-  const textRef3 = useInView({ threshold: 0.5 });
-
-  const imgAnimation = useSpring({
-    opacity: imgRef.inView ? 1 : 0,
-    transform: imgRef.inView ? 'translateY(0)' : 'translateY(50px)',
-    config: { mass: 1, tension: 120, friction: 14 },
-  });
-
- 
-  const textAnimation1 = useSpring({
-    opacity: textRef1.inView ? 1 : 0,
-    transform: textRef1.inView ? 'translateY(0)' : 'translateY(50px)',
-    config: { mass: 1, tension: 120, friction: 14 },
-  });
-
-  const videoAnimation = useSpring({
-    opacity: videoRef.inView ? 1 : 0,
-    transform: videoRef.inView ? 'translateY(0)' : 'translateY(50px)',
-    config: { mass: 1, tension: 120, friction: 14 },
-  });
-
-
-  const textAnimation2 = useSpring({
-    opacity: textRef2.inView ? 1 : 0,
-    transform: textRef2.inView ? 'translateY(0)' : 'translateY(50px)',
-    config: { mass: 1, tension: 120, friction: 14 },
-  });
-
-  const imgAnimation2 = useSpring({
-    opacity: imgRef2.inView ? 1 : 0,
-    transform: imgRef2.inView ? 'translateY(0)' : 'translateY(50px)',
-    config: { mass: 1, tension: 120, friction: 14 },
-  });
-
-  const textAnimation3 = useSpring({
-    opacity: textRef3.inView ? 1 : 0,
-    transform: textRef3.inView ? 'translateY(0)' : 'translateY(50px)',
-    config: { mass: 1, tension: 120, friction: 14 },
-  });
-
-
 
 
   const [current, setCurrent] = useState(0);
@@ -206,45 +222,87 @@ function CarDetails({ data }) {
               <p className="text-sm text-white">{teslaData[current].text}</p>
             </div>
 
-            <div className="flex flex-col bg-black gap-14 py-24">
-              <animated.img
-                ref={imgRef.ref}
+            <div className="flex flex-col bg-black gap-14 pt-24">
+              
+              <motion.img
+                ref={imgRef}
                 src={plaid6Mobile}
-                style={imgAnimation}
+                initial={{ opacity: 0, y: 50 }}
+                animate={animation2}
               />
 
-              <animated.div style={textAnimation1} ref={textRef1.ref} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+              <motion.div
+                ref={textRef1}
+                initial={{ opacity: 0, y: 50 }}
+                animate={animation2}
+                className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+              >
                 <p className="text-md font-medium text-white">Stay Connected</p>
-                <p className="text-sm text-white">Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging.</p>
-              </animated.div>
+                <p className="text-sm text-white">
+          Instantly connect with multi-device Bluetooth, or fast charge devices
+          with wireless and 36-watt USB-C charging.
+                </p>
+              </motion.div>
 
-              <animated.div style={videoAnimation} ref={videoRef.ref}>
+
+              <motion.div
+                ref={videoRef}
+                initial={{ opacity: 0, y: 50 }}
+                animate={animation3}
+              >
                 <ReactPlayer
                   className="h-full w-full object-cover"
                   url={plaidVideo6}
                   playing={true}
                   muted={true}
                   loop={true}
-                  width='100%'
-                  height='100%'
+                  width="100%"
+                  height="100%"
                 />
-              </animated.div>
-              <animated.div style={textAnimation2} ref={textRef2.ref} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+              </motion.div>
+
+              <motion.div
+                ref={textRef2}
+                initial={{ opacity: 0, y: 50 }}
+                animate={animation4}
+                className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+              >
                 <p className="text-md font-medium text-white">Immersive Sound</p>
-                <p className="text-sm text-white">A 22-speaker, 960-watt audio system with Active Road Noise Reduction offers immersive listening and studio-grade sound quality.</p>
-              </animated.div>
+                <p className="text-sm text-white">
+          A 22-speaker, 960-watt audio system with Active Road Noise Reduction
+          offers immersive listening and studio-grade sound quality.
+                </p>
+              </motion.div>
 
-
-              <animated.img
-                ref={imgRef2.ref}
+              <motion.img
+                ref={imgRef2}
                 src={plaid7}
-                style={imgAnimation2}
+                initial={{ opacity: 0, y: 50 }}
+                animate={animation5}
               />
 
-              <animated.div style={textAnimation3} ref={textRef3.ref} className='flex flex-col text-left bg-opacity-50 px-6 gap-4'>
+              <motion.div
+                ref={textRef3}
+                initial={{ opacity: 0, y: 50 }}
+                animate={animation6}
+                className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+              >
                 <p className="text-md font-medium text-white">Room for Everything</p>
-                <p className="text-sm text-white">With front and rear trunks and fold-flat seats you can fit your bike without taking the wheel off—and your luggage too.</p>
-              </animated.div>
+                <p className="text-sm text-white">
+          With front and rear trunks and fold-flat seats you can fit your bike
+          without taking the wheel off—and your luggage too.
+                </p>
+              </motion.div>
+
+
+
+
+              <div className="relative flex justify-center items-end mb-10">
+                <img src={plaid5Mobile} alt="" />
+                <div className="absolute">
+                  <p className='text-red-500'>asdsad</p>
+                </div>
+              </div>
             </div>
           </div>
 

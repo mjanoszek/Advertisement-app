@@ -8,6 +8,7 @@ export { default as plaidVideo4 } from './plaidVideo4.mp4';
 export { default as plaidVideo5 } from './plaidVideo5.mp4';
 export { default as plaidVideo6 } from './plaidVideo6.mp4';
 export { default as plaid6Mobile } from './plaid6.jpeg';
+export { default as plaid5Mobile } from './plaid5Mobile.jpeg';
 export { default as plaid7 } from './plaid7.jpeg';
 
 
