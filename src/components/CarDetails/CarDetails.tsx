@@ -28,54 +28,24 @@ function CarDetails({ data }) {
   const animation5 = useAnimation();
   const animation6 = useAnimation();
 
-  useEffect(() => {
-    if (inViewText3) {
-      animation1.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
-    } else {
-      animation1.start({ opacity: 0, y: 50 });
-    }
-  }, [animation1, inViewText3]);
+  const animations = [
+    { animation: animation1, inView: inViewText3 },
+    { animation: animation2, inView: inViewImg },
+    { animation: animation3, inView: inViewText },
+    { animation: animation4, inView: inViewVideo },
+    { animation: animation5, inView: inViewText2 },
+    { animation: animation6, inView: inViewImg2 },
+  ];
 
   useEffect(() => {
-    if (inViewImg) {
-      animation2.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
-    } else {
-      animation2.start({ opacity: 0, y: 50 });
-    }
-  }, [animation2, inViewImg]);
-
-  useEffect(() => {
-    if (inViewText) {
-      animation3.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
-    } else {
-      animation3.start({ opacity: 0, y: 50 });
-    }
-  }, [animation3, inViewText]);
-
-  useEffect(() => {
-    if (inViewVideo) {
-      animation4.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
-    } else {
-      animation4.start({ opacity: 0, y: 50 });
-    }
-  }, [animation4, inViewVideo]);
-
-  useEffect(() => {
-    if (inViewText2) {
-      animation5.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
-    } else {
-      animation5.start({ opacity: 0, y: 50 });
-    }
-  }, [animation5, inViewText2]);
-
-  useEffect(() => {
-    if (inViewImg2) {
-      animation6.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
-    } else {
-      animation6.start({ opacity: 0, y: 50 });
-    }
-  }, [animation6, inViewImg2]);
-
+    animations.forEach(({ animation, inView }) => {
+      if (inView) {
+        animation.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+      } else {
+        animation.start({ opacity: 0, y: 50 });
+      }
+    });
+  }, [animations]);
  
 
 
