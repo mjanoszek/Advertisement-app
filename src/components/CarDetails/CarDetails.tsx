@@ -14,12 +14,12 @@ import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plai
 
 function CarDetails({ data }) {
 
-  const [imgRef, inViewImg] = useInView({ threshold: 0.5 });
-  const [imgRef2, inViewImg2] = useInView({ threshold: 0.5 });
-  const [textRef1, inViewText] = useInView({ threshold: 0.5 });
-  const [textRef2, inViewText2] = useInView({ threshold: 0.5 });
-  const [textRef3, inViewText3] = useInView({ threshold: 0.5 });
-  const [videoRef, inViewVideo] = useInView({ threshold: 0.5 });
+  const [imgRef, inViewImg] = useInView({ threshold: 1, triggerOnce: true });
+  const [imgRef2, inViewImg2] = useInView({ threshold: 1, triggerOnce: true });
+  const [textRef1, inViewText] = useInView({ threshold: 1, triggerOnce: true });
+  const [textRef2, inViewText2] = useInView({ threshold: 1, triggerOnce: true });
+  const [textRef3, inViewText3] = useInView({ threshold: 1, triggerOnce: true });
+  const [videoRef, inViewVideo] = useInView({ threshold: 1, triggerOnce: true });
 
   const animation1 = useAnimation();
   const animation2 = useAnimation();
@@ -40,13 +40,15 @@ function CarDetails({ data }) {
   useEffect(() => {
     animations.forEach(({ animation, inView }) => {
       if (inView) {
-        animation.start({ opacity: 1, y: 0, transition: { duration: 0.6 } });
+        animation.start({ opacity: 1, y: 0, transition: { duration: 2 } });
       } else {
-        animation.start({ opacity: 0, y: 50 });
+        animation.start({ opacity: 0, y: 50, transition: { duration: 2 } });
       }
     });
   }, [animations]);
+
  
+  
 
 
   const [current, setCurrent] = useState(0);
@@ -97,7 +99,7 @@ function CarDetails({ data }) {
           <p className='text-4xl font-medium '>Model S</p>
           <p className='text-xl font-normal '>Plaid</p>
         </div>
-        <div className="flex justify-center items-center gap-5 self-start text-white  mb-24 text-center w-screen">
+        <div className="flex justify-center items-center gap-3 mb-24 self-start text-white text-center w-screen px-5">
           <div className="flex flex-col">
             <p className='font-medium text-xl'>{data.range}</p>
             <p className='text-xs'>Range</p>
@@ -267,11 +269,26 @@ function CarDetails({ data }) {
 
 
 
-              <div className="relative flex justify-center items-end mb-10">
-                <img src={plaid5Mobile} alt="" />
-                <div className="absolute">
-                  <p className='text-red-500'>asdsad</p>
+              <div className="relative flex justify-center items-end mt-10">
+                <div className="flex justify-center flex-col bg-cover bg-center h-[65vh]" style={{ backgroundImage: `url(${plaid5Mobile})` }} >
+                  <div className="flex justify-center items-center gap-3 self-start text-white  mb-24 text-center w-screen h-screen mt-[32rem] px-5">
+                    <div className="flex flex-col">
+                      <p className='font-medium text-xl'>{data.power}</p>
+                      <p className='text-xs'>Vehicle Power‡</p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className='font-medium text-xl'>{data.yearOfManufacture}</p>
+                      <p className='text-xs'>Year Of Manufacture</p>
+                    </div>
+                    <div className="flex flex-col">
+                      <p className='font-medium text-xl'>{data.ZeroToHundred}</p>
+                      <p className='text-xs'>0-100 km/h</p>
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div className="bg-white">
+                <p>sdfsdfdsf</p>
               </div>
             </div>
           </div>
