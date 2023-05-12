@@ -1,25 +1,33 @@
 import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
-// import { useSpring, animated } from '@react-spring/web';
 import { useInView } from 'react-intersection-observer';
 
 import Navbar from '../Navbar/Navbar';
-import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7, plaid5Mobile } from '../../assets/Images/Cars/Tesla/plaidImport';
+import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2 } from '../../assets/Images/Cars/Tesla/plaidImport';
 
 // import { useMediaQuery } from 'react-responsive';
 
 
+interface CarDetailsProps {
+  data: {
+    range: string;
+    ZeroToHundred: string;
+    topSpeed: string;
+    yearOfManufacture: string;
+    power: string;
+  };
+}
 
 
-function CarDetails({ data }) {
+function CarDetails({ data }:CarDetailsProps) {
 
-  const [imgRef, inViewImg] = useInView({ threshold: 1, triggerOnce: true });
-  const [imgRef2, inViewImg2] = useInView({ threshold: 1, triggerOnce: true });
-  const [textRef1, inViewText] = useInView({ threshold: 1, triggerOnce: true });
-  const [textRef2, inViewText2] = useInView({ threshold: 1, triggerOnce: true });
-  const [textRef3, inViewText3] = useInView({ threshold: 1, triggerOnce: true });
-  const [videoRef, inViewVideo] = useInView({ threshold: 1, triggerOnce: true });
+  const [imgRef, inViewImg] = useInView({ threshold: 1 });
+  const [imgRef2, inViewImg2] = useInView({ threshold: 1 });
+  const [textRef1, inViewText1] = useInView({ threshold: 1 });
+  const [textRef2, inViewText2] = useInView({ threshold: 1 });
+  const [textRef3, inViewText3] = useInView({ threshold: 1 });
+  const [videoRef, inViewVideo] = useInView({ threshold: 1 });
 
   const animation1 = useAnimation();
   const animation2 = useAnimation();
@@ -28,21 +36,14 @@ function CarDetails({ data }) {
   const animation5 = useAnimation();
   const animation6 = useAnimation();
 
-  const animations = [
-    { animation: animation1, inView: inViewText3 },
-    { animation: animation2, inView: inViewImg },
-    { animation: animation3, inView: inViewText },
-    { animation: animation4, inView: inViewVideo },
-    { animation: animation5, inView: inViewText2 },
-    { animation: animation6, inView: inViewImg2 },
-  ];
+  const animations = [  { animation: animation1, inView: inViewText1 },  { animation: animation2, inView: inViewImg },  { animation: animation3, inView: inViewVideo },  { animation: animation4, inView: inViewText2 },  { animation: animation5, inView: inViewImg2 },  { animation: animation6, inView: inViewText3 }];
 
   useEffect(() => {
     animations.forEach(({ animation, inView }) => {
       if (inView) {
-        animation.start({ opacity: 1, y: 0, transition: { duration: 2 } });
+        animation.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
       } else {
-        animation.start({ opacity: 0, y: 50, transition: { duration: 2 } });
+        animation.start({ opacity: 0, y: 1, transition: { duration: 0.5 } });
       }
     });
   }, [animations]);
@@ -50,18 +51,20 @@ function CarDetails({ data }) {
  
   
 
-
-  const [current, setCurrent] = useState(0);
+  const [currentVideo, setCurrentVideo] = useState(0);
 
   const handleVideoChange = (indx: number) => {
-    setCurrent(indx);
+    setCurrentVideo(indx);
   };
- 
+
+
+
+  
 
   // const isMobile = useMediaQuery({ maxWidth: 768 });
 
   
-  const teslaData = [
+  const teslaVideosData = [
     {
       url: plaidVideo1,
       heading: 'Cinematic Experience',
@@ -89,7 +92,32 @@ function CarDetails({ data }) {
     },
   ];
 
+
+  const teslaImagesData = [
+    {
+      url: plaidPowertrainMobile,
+      heading: 'Model S',
+      text: 'Dual Motor All-Wheel Drive unlocks more range than any other vehicle in our current lineup, with insane power and maximum control.',
+      zeroToHundred: '3.2 s',
+      range: '634 km',
+    },
+    {
+      url: plaidPowertrainMobile2,
+      heading: 'Model S Plaid',
+      text: 'Maintain 1,000+ horsepower all the way to 322 km/h with Tri-Motor All-Wheel Drive, featuring torque vectoring and three independent carbon-sleeved rotors.',
+      zeroToHundred: '2.1 s*',
+      range: '600 km',
+    },
+  ];
+
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const handleBoxClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
   
+ 
   return (
     <>
       <Navbar isAbsolute={true} />
@@ -130,7 +158,7 @@ function CarDetails({ data }) {
           <div className="absolute top-10">
             <AnimatePresence mode='wait'>
               <motion.div
-                key={current}
+                key={currentVideo}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
@@ -138,7 +166,7 @@ function CarDetails({ data }) {
               >
                 <ReactPlayer
                   className="h-full w-full object-cover "
-                  url={teslaData[current].url}
+                  url={teslaVideosData[currentVideo].url}
                   playing={true}
                   muted={true}
                   loop={true}
@@ -156,17 +184,17 @@ function CarDetails({ data }) {
               
           <div className="flex flex-col justify-start gap-10 mt-64">
             <div className="flex justify-start px-4">
-              {teslaData.map((item, indx) => (
+              {teslaVideosData.map((item, indx) => (
                 <div key={indx} className="relative h-full">
                   <button
                     className={`mx-2 rounded-full h-3 w-3 border-2 border-transparent bg-gray-500 ${
-                      indx === current && 'bg-gray-100'
+                      indx === currentVideo && 'bg-gray-100'
                     }`}
                     onClick={() => {
                       handleVideoChange(indx);
                     }}
                   />
-                  {indx === current ? (
+                  {indx === currentVideo ? (
                     <motion.div
                       className="bg-white w-3 h-3 rounded-full absolute mx-2 "
                       layoutId="underline"
@@ -190,8 +218,8 @@ function CarDetails({ data }) {
 
 
             <div className="flex flex-col text-left bg-opacity-50 px-6 gap-4">
-              <p className="text-md font-medium text-white">{teslaData[current].heading}</p>
-              <p className="text-sm text-white">{teslaData[current].text}</p>
+              <p className="text-md font-medium text-white">{teslaVideosData[currentVideo].heading}</p>
+              <p className="text-sm text-white">{teslaVideosData[currentVideo].text}</p>
             </div>
 
             <div className="flex flex-col bg-black gap-14 pt-24">
@@ -269,7 +297,7 @@ function CarDetails({ data }) {
 
 
 
-              <div className="relative flex justify-center items-end mt-10">
+              <div className="relative flex justify-center items-end mt-10 flex-col">
                 <div className="flex justify-center flex-col bg-cover bg-center h-[65vh]" style={{ backgroundImage: `url(${plaid5Mobile})` }} >
                   <div className="flex justify-center items-center gap-3 self-start text-white  mb-24 text-center w-screen h-screen mt-[32rem] px-5">
                     <div className="flex flex-col">
@@ -286,23 +314,76 @@ function CarDetails({ data }) {
                     </div>
                   </div>
                 </div>
+                <div className="flex flex-col justify-start items-start gap-1 text-left text-black bg-white p-5">
+                  <p className='text-md'>Plaid</p>
+                  <p className='font-semibold mb-2 text-xl'>Beyond Ludicrous</p>
+                  <p>Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S trims enables back-to-back track runs without performance degradation.</p>
+                  <button type='button' className='border-2 border-black rounded-md w-full py-2 mt-5'>Order now</button>
+                </div>
+                <div className="flex flex-col justify-start items-start gap-1 text-left text-black bg-gray-100 px-5 py-14">
+                  <p className='font-semibold mb-2 text-xl'>Electric Powertrain</p>
+                  <p className='text-md'>Model S platforms unite powertrain and battery technologies for unrivaled performance, range and efficiency. New module and pack thermal architecture allows faster charging and gives you more power and endurance in all conditions.</p>
+                  
+                </div>
+                  
+                
+                
+                
+
+                <div className="flex flex-col items-center justify-center w-full bg-gray-100">
+                  <motion.img
+                    key={teslaImagesData[currentImageIndex].url}
+                    src={teslaImagesData[currentImageIndex].url}
+                    alt={teslaImagesData[currentImageIndex].heading}
+                    className="w-full h-full object-cover "
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0, transition: { duration: 0.5 } }}
+                    transition={{ duration: 0.5 }}
+                  />
+
+                  <div className="flex mt-4 md:mt-0">
+                    {teslaImagesData.map((item, index) => (
+                      <motion.button
+                        key={index}
+                        onClick={() => handleBoxClick(index)}
+                        className={`${
+                          currentImageIndex === index ? 'opacity-100' : 'opacity-25'
+                        } hover:opacity-100 cursor-pointer transition-all duration-500`}
+                      >
+                        <div className="w-full p-4 flex flex-col text-left">
+                          <h2 className="text-black font-bold mb-2 text-left">
+                            {item.heading}
+                          </h2>
+                          <div className="flex flex-col">
+                            <p className="text-black mb-2 text-sm">{item.text}</p>
+                            <p className="text-black text-lg">{item.zeroToHundred}</p>
+                            <p className='text-gray-800 text-xs'>0-100 km/h</p>
+                            <p className="text-black text-lg">{item.range}</p>
+                            <p className='text-gray-800 text-xs'>Range (WLTP)</p>
+                          </div>
+                        </div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+                  
+     
+                
+
+                
               </div>
-              <div className="bg-white">
-                <p>sdfsdfdsf</p>
-              </div>
+              
+
             </div>
-          </div>
 
           
+          </div>
+       
         </div>
-       
-         
       
-
-       
+      
       </div>
-      
-    
     </>
   );
 }

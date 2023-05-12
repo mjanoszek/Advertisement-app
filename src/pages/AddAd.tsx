@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar/Navbar';
 
 function AddAd() {
   return (
-    <Navbar/>
+    <Navbar isAbsolute={false}/>
   );
 }
 

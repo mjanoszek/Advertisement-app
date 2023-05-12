@@ -11,4 +11,7 @@ export { default as plaid6Mobile } from './plaid6.jpeg';
 export { default as plaid5Mobile } from './plaid5Mobile.jpeg';
 export { default as plaid7 } from './plaid7.jpeg';
 
+export { default as plaidPowertrainMobile } from './plaidPowertrainMobile.jpeg';
+export { default as plaidPowertrainMobile2 } from './plaidPowertrainMobile2.jpeg';
+
 
