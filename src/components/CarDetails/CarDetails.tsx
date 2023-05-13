@@ -4,7 +4,7 @@ import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import Navbar from '../Navbar/Navbar';
-import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2 } from '../../assets/Images/Cars/Tesla/plaidImport';
+import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
 
 // import { useMediaQuery } from 'react-responsive';
 
@@ -22,12 +22,12 @@ interface CarDetailsProps {
 
 function CarDetails({ data }:CarDetailsProps) {
 
-  const [imgRef, inViewImg] = useInView({ threshold: 1 });
-  const [imgRef2, inViewImg2] = useInView({ threshold: 1 });
-  const [textRef1, inViewText1] = useInView({ threshold: 1 });
-  const [textRef2, inViewText2] = useInView({ threshold: 1 });
-  const [textRef3, inViewText3] = useInView({ threshold: 1 });
-  const [videoRef, inViewVideo] = useInView({ threshold: 1 });
+  const [carConnectedRef, inViewCarConnected] = useInView({ threshold: 1 });
+  const [carSoundRef, inViewCarSound] = useInView({ threshold: 1 });
+  const [carSpaceRef, inViewCarSpace] = useInView({ threshold: 1 });
+  const [carWheelsRef, inViewCarWheels] = useInView({ threshold: 1 });
+  const [carAerodynamicRef, inViewCarAerodynamic] = useInView({ threshold: 1 });
+  const [carStyleRef, inViewCarStyle] = useInView({ threshold: 1 });
 
   const animation1 = useAnimation();
   const animation2 = useAnimation();
@@ -36,7 +36,19 @@ function CarDetails({ data }:CarDetailsProps) {
   const animation5 = useAnimation();
   const animation6 = useAnimation();
 
-  const animations = [  { animation: animation1, inView: inViewText1 },  { animation: animation2, inView: inViewImg },  { animation: animation3, inView: inViewVideo },  { animation: animation4, inView: inViewText2 },  { animation: animation5, inView: inViewImg2 },  { animation: animation6, inView: inViewText3 }];
+
+  const animations = [
+    { animation: animation1, inView: inViewCarConnected },
+    { animation: animation2, inView: inViewCarSound },
+    { animation: animation3, inView: inViewCarSpace },
+    { animation: animation4, inView: inViewCarWheels },
+    { animation: animation5, inView: inViewCarAerodynamic },
+    { animation: animation6, inView: inViewCarStyle },
+  ];
+
+
+
+
 
   useEffect(() => {
     animations.forEach(({ animation, inView }) => {
@@ -146,7 +158,7 @@ function CarDetails({ data }:CarDetailsProps) {
 
       <div className="flex justify-center flex-col bg-cover bg-center h-screen shadow-[inset_0_90px_90px_0_rgba(0,0,0,0.6)]" style={{ backgroundImage: `url(${plaid3Mobile})` }} >
         <div className="flex flex-col text-center self-center text-white mt-36 h-screen ">
-          <p className='text-xl font-medium '>Interior of the future S</p>
+          <p className='text-xl font-medium'>Interior of the future S</p>
         </div>
       </div>
 
@@ -225,16 +237,16 @@ function CarDetails({ data }:CarDetailsProps) {
             <div className="flex flex-col bg-black gap-14 pt-24">
               
               <motion.img
-                ref={imgRef}
+                ref={carConnectedRef}
                 src={plaid6Mobile}
                 initial={{ opacity: 0, y: 50 }}
-                animate={animation2}
+                animate={animation1}
               />
 
               <motion.div
-                ref={textRef1}
+                ref={carConnectedRef}
                 initial={{ opacity: 0, y: 50 }}
-                animate={animation2}
+                animate={animation1}
                 className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
               >
                 <p className="text-md font-medium text-white">Stay Connected</p>
@@ -246,9 +258,9 @@ function CarDetails({ data }:CarDetailsProps) {
 
 
               <motion.div
-                ref={videoRef}
+                ref={carSoundRef}
                 initial={{ opacity: 0, y: 50 }}
-                animate={animation3}
+                animate={animation2}
               >
                 <ReactPlayer
                   className="h-full w-full object-cover"
@@ -262,9 +274,9 @@ function CarDetails({ data }:CarDetailsProps) {
               </motion.div>
 
               <motion.div
-                ref={textRef2}
+                ref={carSoundRef}
                 initial={{ opacity: 0, y: 50 }}
-                animate={animation4}
+                animate={animation2}
                 className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
               >
                 <p className="text-md font-medium text-white">Immersive Sound</p>
@@ -275,16 +287,16 @@ function CarDetails({ data }:CarDetailsProps) {
               </motion.div>
 
               <motion.img
-                ref={imgRef2}
+                ref={carSpaceRef}
                 src={plaid7}
                 initial={{ opacity: 0, y: 50 }}
-                animate={animation5}
+                animate={animation3}
               />
 
               <motion.div
-                ref={textRef3}
+                ref={carSpaceRef}
                 initial={{ opacity: 0, y: 50 }}
-                animate={animation6}
+                animate={animation3}
                 className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
               >
                 <p className="text-md font-medium text-white">Room for Everything</p>
@@ -366,17 +378,91 @@ function CarDetails({ data }:CarDetailsProps) {
                       </motion.button>
                     ))}
                   </div>
+                  <p className='text-gray-800 text-sm p-5'>* With rollout subtracted</p>
                 </div>
-                  
-     
-                
-
-                
               </div>
               
+              <div className="flex flex-col bg-black gap-14 py-10">
+                <div className="flex flex-col">
+                  <img src={plaid4Mobile} alt='plaidExterior' />
+                  <div className="flex flex-col text-left px-6">
+                    <p>Exterior</p>
+                    <p className='font-medium text-2xl'>Designed for Efficiency</p>
+                    <p className='mt-4 font-light'>With a drag coefficient of just .208 Cd, the lowest on the planet, Model S is built for speed, endurance and range. Improved aerodynamics and a wider chassis offer more responsive performance so you can take corners quicker and with more confidence.</p>
+                    <button type='button' className='border-2 border-white rounded-md w-full py-2 mt-5'>Order now</button>
+                  </div>
+                </div>
 
+
+
+
+                <motion.img
+                  ref={carWheelsRef}
+                  src={plaidWheels}
+                  animate={animation4}
+                />
+
+                <motion.div
+                  ref={carWheelsRef}
+                  animate={animation4}
+                  className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+                >
+                  <p className="text-md font-medium text-white">Relentless Performance</p>
+                  <p className="text-sm text-white">
+          Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road.
+                  </p>
+                </motion.div>
+
+
+
+
+                <motion.img
+                  ref={carAerodynamicRef}
+                  src={plaidAerodynamics}
+                  animate={animation5}
+                  initial={{ opacity: 0, y: 50 }}
+                />
+
+                <motion.div
+                  ref={carAerodynamicRef}
+                  animate={animation5}
+                  initial={{ opacity: 0, y: 50 }}
+                  className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+                >
+                  <p className="text-md font-medium text-white">Optimized Aerodynamics</p>
+                  <p className="text-sm text-white">
+         Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth.
+                  </p>
+                </motion.div>
+
+
+
+
+
+                <motion.img
+                  ref={carStyleRef}
+                  src={plaidStyle}
+                  animate={animation6}
+                  initial={{ opacity: 0, y: 50 }}
+                />
+
+                <motion.div
+                  ref={carStyleRef}
+                  animate={animation6}
+                  initial={{ opacity: 0, y: 50 }}
+                  className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+                >
+                  <p className="text-md font-medium text-white">Refined Styling</p>
+                  <p className="text-sm text-white">
+          An iconic silhouette meets refreshed, elegant proportions.
+                  </p>
+                </motion.div>
+
+
+
+
+              </div>
             </div>
-
           
           </div>
        
