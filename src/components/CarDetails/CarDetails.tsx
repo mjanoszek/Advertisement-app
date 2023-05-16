@@ -4,7 +4,7 @@ import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 
 import Navbar from '../Navbar/Navbar';
-import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
+import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
 
 // import { useMediaQuery } from 'react-responsive';
 
@@ -128,7 +128,12 @@ function CarDetails({ data }:CarDetailsProps) {
     setCurrentImageIndex(index);
   };
 
-  
+  const allIngredients = [
+    { icon: '🍅', label: 'Tomato' },
+    { icon: '🥬', label: 'Lettuce' },
+    { icon: '🧀', label: 'Cheese' },
+  ];
+  const [selectedTab, setSelectedTab] = useState(allIngredients[0]);
  
   return (
     <>
@@ -458,9 +463,97 @@ function CarDetails({ data }:CarDetailsProps) {
                   </p>
                 </motion.div>
 
+              </div>
 
 
+         
+              <div className="flex justify-center flex-col h-[65vh] relative">
+                <div className="h-full w-full">
+                  <ReactPlayer
+                    className="object-cover"
+                    url={plaidVideo7}
+                    playing={true}
+                    muted={true}
+                    loop={true}
+                    width="100%"
+                    height="100%"
+                  />
+                  <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
+                    <div className="flex justify-center items-center gap-3 text-white text-center mb-24 mt-[32rem] px-2">
+                      <div className="flex flex-col">
+                        <p className="font-medium">634 km</p>
+                        <p className="text-xs">Range (WLTP)</p>
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="font-medium">15 min</p>
+                        <p className="text-xs">Recharge up to 322 km</p>
+                      </div>
+                      <div className="flex flex-col">
+                        <p className="font-medium">45,000+</p>
+                        <p className="text-xs">Global Supercharges</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
+              
+            </div>
+            <div className="flex flex-col justify-start items-start gap-32 text-left text-black bg-white p-5">
+              <div className="flex-col">
+                <p className='text-md'>Range</p>
+                <p className='font-semibold mb-2 text-xl'>Go Anywhere</p>
+                <p>
+          With up to 634 kilometers of estimated range and access to the world’s largest and most powerful fast charging network, you’ll spend less time plugged in and more time on the road.
+                </p>
+                <button type='button' className='border-2 border-black rounded-md w-full py-2 mt-5'>Order now</button>
+              </div>
+
+              <div className="flex-col">
+                <p className='font-semibold mb-2 text-xl'>Freedom to Travel</p>
+                <p>
+          Enter a destination on your touchscreen and Trip Planner will automatically calculate your route with Superchargers along the way.
+                </p>
+              </div>
+
+
+              
+              
+            </div>
+            <div className="h-[400px] flex justify-center items-center">
+              <div className="rounded-2xl bg-white overflow-hidden shadow-md flex flex-col">
+                <div className="flex justify-center items-center text-7xl">
+                  <AnimatePresence mode='wait'>
+                    <motion.div
+                      key={selectedTab ? selectedTab.label : 'empty'}
+                      initial={{ y: 10, opacity: 0 }}
+                      animate={{ y: 0, opacity: 1 }}
+                      exit={{ y: -10, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {selectedTab ? selectedTab.icon : '😋'}
+                    </motion.div>
+                  </AnimatePresence>
+                </div>
+                <div className="bg-black p-2 rounded-b-2xl  border-gray-300">
+                  <ul className="flex">
+                    {allIngredients.map((item) => (
+                      <li
+                        key={item.label}
+                        className={`flex-1 flex items-center justify-between px-2 rounded-md cursor-pointer ${
+                          item === selectedTab ? 'bg-gray-200' : ''
+                        }`}
+                        onClick={() => setSelectedTab(item)}
+                      >
+                        <span className="mr-2">{item.icon}</span>
+                        <span>{item.label}</span>
+                        {item === selectedTab ? (
+                          <motion.div className="underline" layoutId="underline" />
+                        ) : null}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               </div>
             </div>
           
