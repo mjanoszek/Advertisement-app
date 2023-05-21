@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import ReactPlayer from 'react-player';
 import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-
 import Navbar from '../Navbar/Navbar';
 import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
+import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
 
 // import { useMediaQuery } from 'react-responsive';
 
@@ -21,6 +21,8 @@ interface CarDetailsProps {
 
 
 function CarDetails({ data }:CarDetailsProps) {
+
+
 
   const [carConnectedRef, inViewCarConnected] = useInView({ threshold: 1 });
   const [carSoundRef, inViewCarSound] = useInView({ threshold: 1 });
@@ -61,7 +63,6 @@ function CarDetails({ data }:CarDetailsProps) {
   }, [animations]);
 
  
-  
 
   const [currentVideo, setCurrentVideo] = useState(0);
 
@@ -128,12 +129,7 @@ function CarDetails({ data }:CarDetailsProps) {
     setCurrentImageIndex(index);
   };
 
-  const allIngredients = [
-    { icon: '🍅', label: 'Tomato' },
-    { icon: '🥬', label: 'Lettuce' },
-    { icon: '🧀', label: 'Cheese' },
-  ];
-  const [selectedTab, setSelectedTab] = useState(allIngredients[0]);
+  
  
   return (
     <>
@@ -516,12 +512,32 @@ function CarDetails({ data }:CarDetailsProps) {
                 </p>
               </div>
 
+              <ResponsiveCarousel/>
+
 
               
-              
             </div>
-            <div className="h-[400px] flex justify-center items-center">
-              <div className="rounded-2xl bg-white overflow-hidden shadow-md flex flex-col">
+          
+          </div>
+      
+        </div>
+      
+      
+      </div>
+    </>
+  );
+}
+
+export default CarDetails;
+
+
+
+
+
+
+
+{/* <div className="h-[400px] flex justify-center items-center ">
+              <div className="rounded-2xl bg-white overflow-hidden shadow-md flex flex-col ">
                 <div className="flex justify-center items-center text-7xl">
                   <AnimatePresence mode='wait'>
                     <motion.div
@@ -555,16 +571,4 @@ function CarDetails({ data }:CarDetailsProps) {
                   </ul>
                 </div>
               </div>
-            </div>
-          
-          </div>
-       
-        </div>
-      
-      
-      </div>
-    </>
-  );
-}
-
-export default CarDetails;
+            </div> */}
