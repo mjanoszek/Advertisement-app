@@ -3,8 +3,10 @@ import ReactPlayer from 'react-player';
 import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Navbar from '../Navbar/Navbar';
-import { plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
 import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
+import { amsterdamToBrussels, brusselsToParis, munichToZurich, osloToGothenburg, plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
+
+
 
 // import { useMediaQuery } from 'react-responsive';
 
@@ -122,6 +124,34 @@ function CarDetails({ data }:CarDetailsProps) {
       range: '600 km',
     },
   ];
+
+
+
+  const images = [
+    {
+      name: 'Munich to Zurich',
+      distance: '311 km',
+      url: munichToZurich,
+    },
+    {
+      name: 'Amsterdam to Brussels',
+      distance: '203 km',
+      url: amsterdamToBrussels,
+    },
+    {
+      name: 'Brussels to Paris',
+      distance: '320 km',
+      url: brusselsToParis,
+    },
+    {
+      name: 'Oslo to Gothenburg',
+      distance: '295 km',
+      url: osloToGothenburg,
+    },
+  ];
+
+
+
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -512,12 +542,12 @@ function CarDetails({ data }:CarDetailsProps) {
                 </p>
               </div>
 
-              <ResponsiveCarousel/>
-
+              <ResponsiveCarousel images={images}/>
 
               
             </div>
-          
+            
+
           </div>
       
         </div>

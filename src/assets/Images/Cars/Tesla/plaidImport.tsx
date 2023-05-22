@@ -17,5 +17,8 @@ export { default as plaidWheels } from './plaidWheels.jpeg';
 export { default as plaidAerodynamics } from './plaidAerodynamics.jpeg';
 export { default as plaidPowertrainMobile } from './plaidPowertrainMobile.jpeg';
 export { default as plaidPowertrainMobile2 } from './plaidPowertrainMobile2.jpeg';
-
+export { default as amsterdamToBrussels } from './amsterdamToBrussels.svg';
+export { default as brusselsToParis } from './brusselsToParis.svg';
+export { default as munichToZurich } from './munichToZurich.svg';
+export { default as osloToGothenburg } from './osloToGothenburg.svg';
 
