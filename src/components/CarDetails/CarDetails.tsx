@@ -541,15 +541,15 @@ function CarDetails({ data }:CarDetailsProps) {
           Enter a destination on your touchscreen and Trip Planner will automatically calculate your route with Superchargers along the way.
                 </p>
               </div>
-
-              <ResponsiveCarousel images={images}/>
-
+              
               
             </div>
-            
+            <div className=" w-[100vw] p-0">
+              <ResponsiveCarousel images={images}/>
+            </div>
 
           </div>
-      
+          
         </div>
       
       
