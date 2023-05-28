@@ -21,4 +21,5 @@ export { default as amsterdamToBrussels } from './amsterdamToBrussels.svg';
 export { default as brusselsToParis } from './brusselsToParis.svg';
 export { default as munichToZurich } from './munichToZurich.svg';
 export { default as osloToGothenburg } from './osloToGothenburg.svg';
+export { default as plaidModel } from './plaidmodel.jpeg';
 

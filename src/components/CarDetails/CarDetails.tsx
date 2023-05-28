@@ -3,8 +3,9 @@ import ReactPlayer from 'react-player';
 import { motion,  AnimatePresence, useAnimation  } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import Navbar from '../Navbar/Navbar';
-import ResponsiveCarousel from '../ResponsiveCarousel/ResponsiveCarousel';
-import { amsterdamToBrussels, brusselsToParis, munichToZurich, osloToGothenburg, plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
+import CarDetailsCarousel from '../CarDetails/CarDetailsCarousel/CarDetailsCarousel';
+import { plaidModel, amsterdamToBrussels, brusselsToParis, munichToZurich, osloToGothenburg, plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
+import CarDetailsAnimation from './CarDetailsAnimation/CarDetailsAnimation';
 
 
 
@@ -49,6 +50,8 @@ function CarDetails({ data }:CarDetailsProps) {
     { animation: animation5, inView: inViewCarAerodynamic },
     { animation: animation6, inView: inViewCarStyle },
   ];
+
+  
 
 
 
@@ -149,15 +152,6 @@ function CarDetails({ data }:CarDetailsProps) {
       url: osloToGothenburg,
     },
   ];
-
-
-
-
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  const handleBoxClick = (index: number) => {
-    setCurrentImageIndex(index);
-  };
 
   
  
@@ -267,75 +261,30 @@ function CarDetails({ data }:CarDetailsProps) {
 
             <div className="flex flex-col bg-black gap-14 pt-24">
               
-              <motion.img
-                ref={carConnectedRef}
-                src={plaid6Mobile}
-                initial={{ opacity: 0, y: 50 }}
-                animate={animation1}
+              <CarDetailsAnimation
+                imageSrc={plaid6Mobile}
+                heading="Stay Connected"
+                paragraph="Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging."
+                showVideo={false} 
+                videoUrl={null}              
               />
 
-              <motion.div
-                ref={carConnectedRef}
-                initial={{ opacity: 0, y: 50 }}
-                animate={animation1}
-                className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
-              >
-                <p className="text-md font-medium text-white">Stay Connected</p>
-                <p className="text-sm text-white">
-          Instantly connect with multi-device Bluetooth, or fast charge devices
-          with wireless and 36-watt USB-C charging.
-                </p>
-              </motion.div>
-
-
-              <motion.div
-                ref={carSoundRef}
-                initial={{ opacity: 0, y: 50 }}
-                animate={animation2}
-              >
-                <ReactPlayer
-                  className="h-full w-full object-cover"
-                  url={plaidVideo6}
-                  playing={true}
-                  muted={true}
-                  loop={true}
-                  width="100%"
-                  height="100%"
-                />
-              </motion.div>
-
-              <motion.div
-                ref={carSoundRef}
-                initial={{ opacity: 0, y: 50 }}
-                animate={animation2}
-                className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
-              >
-                <p className="text-md font-medium text-white">Immersive Sound</p>
-                <p className="text-sm text-white">
-          A 22-speaker, 960-watt audio system with Active Road Noise Reduction
-          offers immersive listening and studio-grade sound quality.
-                </p>
-              </motion.div>
-
-              <motion.img
-                ref={carSpaceRef}
-                src={plaid7}
-                initial={{ opacity: 0, y: 50 }}
-                animate={animation3}
+              <CarDetailsAnimation
+                imageSrc={null} 
+                heading="Immersive Sound"
+                paragraph="A 22-speaker, 960-watt audio system with Active Road Noise Reduction offers immersive listening and studio-grade sound quality."
+                showVideo={true}
+                videoUrl={plaidVideo6}
               />
 
-              <motion.div
-                ref={carSpaceRef}
-                initial={{ opacity: 0, y: 50 }}
-                animate={animation3}
-                className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
-              >
-                <p className="text-md font-medium text-white">Room for Everything</p>
-                <p className="text-sm text-white">
-          With front and rear trunks and fold-flat seats you can fit your bike
-          without taking the wheel off—and your luggage too.
-                </p>
-              </motion.div>
+              <CarDetailsAnimation
+                imageSrc={plaid7}
+                heading="Room for Everything"
+                paragraph="With front and rear trunks and fold-flat seats you can fit your bike without taking the wheel off—and your luggage too."
+                showVideo={false} 
+                videoUrl={null}
+              />
+
 
 
 
@@ -374,41 +323,8 @@ function CarDetails({ data }:CarDetailsProps) {
                 
 
                 <div className="flex flex-col items-center justify-center w-full bg-gray-100">
-                  <motion.img
-                    key={teslaImagesData[currentImageIndex].url}
-                    src={teslaImagesData[currentImageIndex].url}
-                    alt={teslaImagesData[currentImageIndex].heading}
-                    className="w-full h-full object-cover "
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0, transition: { duration: 0.5 } }}
-                    transition={{ duration: 0.5 }}
-                  />
+                  <CarDetailsCarousel images={teslaImagesData}/>
 
-                  <div className="flex mt-4 md:mt-0">
-                    {teslaImagesData.map((item, index) => (
-                      <motion.button
-                        key={index}
-                        onClick={() => handleBoxClick(index)}
-                        className={`${
-                          currentImageIndex === index ? 'opacity-100' : 'opacity-25'
-                        } hover:opacity-100 cursor-pointer transition-all duration-500`}
-                      >
-                        <div className="w-full p-4 flex flex-col text-left">
-                          <h2 className="text-black font-bold mb-2 text-left">
-                            {item.heading}
-                          </h2>
-                          <div className="flex flex-col">
-                            <p className="text-black mb-2 text-sm">{item.text}</p>
-                            <p className="text-black text-lg">{item.zeroToHundred}</p>
-                            <p className='text-gray-800 text-xs'>0-100 km/h</p>
-                            <p className="text-black text-lg">{item.range}</p>
-                            <p className='text-gray-800 text-xs'>Range (WLTP)</p>
-                          </div>
-                        </div>
-                      </motion.button>
-                    ))}
-                  </div>
                   <p className='text-gray-800 text-sm p-5'>* With rollout subtracted</p>
                 </div>
               </div>
@@ -425,69 +341,34 @@ function CarDetails({ data }:CarDetailsProps) {
                 </div>
 
 
-
-
-                <motion.img
-                  ref={carWheelsRef}
-                  src={plaidWheels}
-                  animate={animation4}
+                <CarDetailsAnimation
+                  imageSrc={plaidWheels}
+                  heading="Relentless Performance"
+                  paragraph="Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road."
+                  showVideo={false} 
+                  videoUrl={null}              
                 />
 
-                <motion.div
-                  ref={carWheelsRef}
-                  animate={animation4}
-                  className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
-                >
-                  <p className="text-md font-medium text-white">Relentless Performance</p>
-                  <p className="text-sm text-white">
-          Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road.
-                  </p>
-                </motion.div>
-
-
-
-
-                <motion.img
-                  ref={carAerodynamicRef}
-                  src={plaidAerodynamics}
-                  animate={animation5}
-                  initial={{ opacity: 0, y: 50 }}
+               
+                <CarDetailsAnimation
+                  imageSrc={plaidAerodynamics}
+                  heading="Optimized Aerodynamics"
+                  paragraph="Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth."
+                  showVideo={false} 
+                  videoUrl={null}              
                 />
 
-                <motion.div
-                  ref={carAerodynamicRef}
-                  animate={animation5}
-                  initial={{ opacity: 0, y: 50 }}
-                  className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
-                >
-                  <p className="text-md font-medium text-white">Optimized Aerodynamics</p>
-                  <p className="text-sm text-white">
-         Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth.
-                  </p>
-                </motion.div>
 
 
-
-
-
-                <motion.img
-                  ref={carStyleRef}
-                  src={plaidStyle}
-                  animate={animation6}
-                  initial={{ opacity: 0, y: 50 }}
+                <CarDetailsAnimation
+                  imageSrc={plaidStyle}
+                  heading="Refined Styling"
+                  paragraph="An iconic silhouette meets refreshed, elegant proportions."
+                  showVideo={false} 
+                  videoUrl={null}              
                 />
 
-                <motion.div
-                  ref={carStyleRef}
-                  animate={animation6}
-                  initial={{ opacity: 0, y: 50 }}
-                  className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
-                >
-                  <p className="text-md font-medium text-white">Refined Styling</p>
-                  <p className="text-sm text-white">
-          An iconic silhouette meets refreshed, elegant proportions.
-                  </p>
-                </motion.div>
+
 
               </div>
 
@@ -532,7 +413,9 @@ function CarDetails({ data }:CarDetailsProps) {
                 <p>
           With up to 634 kilometers of estimated range and access to the world’s largest and most powerful fast charging network, you’ll spend less time plugged in and more time on the road.
                 </p>
-                <button type='button' className='border-2 border-black rounded-md w-full py-2 mt-5'>Order now</button>
+                <button type='button' className='border-2 font-medium border-black rounded-md w-full py-2 mt-5'>Order now</button>
+                <button type='button' className='bg-gray-100 font-medium rounded-md w-full py-2 mt-5'>Find my route</button>
+
               </div>
 
               <div className="flex-col">
@@ -544,10 +427,25 @@ function CarDetails({ data }:CarDetailsProps) {
               
               
             </div>
-            <div className=" w-[100vw] p-0">
-              <ResponsiveCarousel images={images}/>
+            <div className="flex flex-col">
+              <CarDetailsCarousel images={images}/>
+              <div className="flex flex-col justify-start items-start  text-left text-black bg-white p-5">
+                <button type='button' className='border-2 border-black font-medium rounded-md w-full py-2 mt-5'>Learn more</button>
+              </div>
             </div>
+          </div>
+          <div className="relative">
+            <img src={plaidModel} alt="plaidModel" />
+            <div className="absolute top-0 left-0">
 
+            
+              <div className="bg-black p-0.5 rounded-md rotate-90 absolute"></div>
+             
+
+              <div className="bg-white p-2 rounded-lg shadow">
+                <p className="text-gray-800">Callout 2</p>
+              </div>
+            </div>
           </div>
           
         </div>
@@ -564,41 +462,3 @@ export default CarDetails;
 
 
 
-
-
-{/* <div className="h-[400px] flex justify-center items-center ">
-              <div className="rounded-2xl bg-white overflow-hidden shadow-md flex flex-col ">
-                <div className="flex justify-center items-center text-7xl">
-                  <AnimatePresence mode='wait'>
-                    <motion.div
-                      key={selectedTab ? selectedTab.label : 'empty'}
-                      initial={{ y: 10, opacity: 0 }}
-                      animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -10, opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      {selectedTab ? selectedTab.icon : '😋'}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-                <div className="bg-black p-2 rounded-b-2xl  border-gray-300">
-                  <ul className="flex">
-                    {allIngredients.map((item) => (
-                      <li
-                        key={item.label}
-                        className={`flex-1 flex items-center justify-between px-2 rounded-md cursor-pointer ${
-                          item === selectedTab ? 'bg-gray-200' : ''
-                        }`}
-                        onClick={() => setSelectedTab(item)}
-                      >
-                        <span className="mr-2">{item.icon}</span>
-                        <span>{item.label}</span>
-                        {item === selectedTab ? (
-                          <motion.div className="underline" layoutId="underline" />
-                        ) : null}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </div> */}
