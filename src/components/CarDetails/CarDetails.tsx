@@ -6,6 +6,7 @@ import Navbar from '../Navbar/Navbar';
 import CarDetailsCarousel from '../CarDetails/CarDetailsCarousel/CarDetailsCarousel';
 import { plaidModel, amsterdamToBrussels, brusselsToParis, munichToZurich, osloToGothenburg, plaid1Mobile, plaid3Mobile, plaidVideo1, plaidVideo2, plaidVideo3, plaidVideo4, plaid4Mobile, plaidVideo5, plaidVideo6, plaidVideo7, plaid6Mobile, plaid7, plaid5Mobile, plaidPowertrainMobile, plaidPowertrainMobile2, plaidStyle, plaidWheels, plaidAerodynamics } from '../../assets/Images/Cars/Tesla/plaidImport';
 import CarDetailsAnimation from './CarDetailsAnimation/CarDetailsAnimation';
+import CarDetailsStats from './CarDetailsStats/CarDetailsStats';
 
 
 
@@ -25,50 +26,7 @@ interface CarDetailsProps {
 
 function CarDetails({ data }:CarDetailsProps) {
 
-
-
-  const [carConnectedRef, inViewCarConnected] = useInView({ threshold: 1 });
-  const [carSoundRef, inViewCarSound] = useInView({ threshold: 1 });
-  const [carSpaceRef, inViewCarSpace] = useInView({ threshold: 1 });
-  const [carWheelsRef, inViewCarWheels] = useInView({ threshold: 1 });
-  const [carAerodynamicRef, inViewCarAerodynamic] = useInView({ threshold: 1 });
-  const [carStyleRef, inViewCarStyle] = useInView({ threshold: 1 });
-
-  const animation1 = useAnimation();
-  const animation2 = useAnimation();
-  const animation3 = useAnimation();
-  const animation4 = useAnimation();
-  const animation5 = useAnimation();
-  const animation6 = useAnimation();
-
-
-  const animations = [
-    { animation: animation1, inView: inViewCarConnected },
-    { animation: animation2, inView: inViewCarSound },
-    { animation: animation3, inView: inViewCarSpace },
-    { animation: animation4, inView: inViewCarWheels },
-    { animation: animation5, inView: inViewCarAerodynamic },
-    { animation: animation6, inView: inViewCarStyle },
-  ];
-
-  
-
-
-
-
-
-  useEffect(() => {
-    animations.forEach(({ animation, inView }) => {
-      if (inView) {
-        animation.start({ opacity: 1, y: 0, transition: { duration: 0.5 } });
-      } else {
-        animation.start({ opacity: 0, y: 1, transition: { duration: 0.5 } });
-      }
-    });
-  }, [animations]);
-
  
-
   const [currentVideo, setCurrentVideo] = useState(0);
 
   const handleVideoChange = (indx: number) => {
@@ -164,7 +122,7 @@ function CarDetails({ data }:CarDetailsProps) {
           <p className='text-4xl font-medium '>Model S</p>
           <p className='text-xl font-normal '>Plaid</p>
         </div>
-        <div className="flex justify-center items-center gap-3 mb-24 self-start text-white text-center w-screen px-5">
+        <div className="flex justify-center items-center gap-3 mb-8  text-white text-center w-screen px-5">
           <div className="flex flex-col">
             <p className='font-medium text-xl'>{data.range}</p>
             <p className='text-xs'>Range</p>
@@ -178,12 +136,27 @@ function CarDetails({ data }:CarDetailsProps) {
             <p className='font-medium text-xl'>{data.topSpeed}</p>
             <p className='text-xs'>Top Speed</p>
           </div>
+          
         </div>
+        <div className="flex justify-center items-center  text-white text-center w-screen px-5">
+          <button type='button' className='border-2 bg-white text-black font-medium rounded-md w-full py-2 mx-5'>Order Now</button>
+        </div>
+        
       </div>
 
-      <div className="flex justify-center flex-col bg-cover bg-center h-screen shadow-[inset_0_90px_90px_0_rgba(0,0,0,0.6)]" style={{ backgroundImage: `url(${plaid3Mobile})` }} >
+
+
+      <div className="flex justify-center flex-col bg-cover bg-center h-screen shadow-[inset_0_360px_69px_0_rgba(0,0,0,0.6)]" style={{ backgroundImage: `url(${plaid3Mobile})` }} >
         <div className="flex flex-col text-center self-center text-white mt-36 h-screen ">
-          <p className='text-xl font-medium'>Interior of the future S</p>
+          <div className="text-xl">
+            <CarDetailsAnimation
+              imageSrc={null}
+              heading={'Interior of the future S'}
+              paragraph={null}
+              showVideo={null}
+              videoUrl={null}
+            />
+          </div>
         </div>
       </div>
 
@@ -191,7 +164,6 @@ function CarDetails({ data }:CarDetailsProps) {
 
       <div className="flex justify-center flex-col h-screen bg-black " >
         <div className="flex flex-col text-center self-center text-white h-screen relative mt-16">
-
           <div className="absolute top-10">
             <AnimatePresence mode='wait'>
               <motion.div
@@ -249,11 +221,6 @@ function CarDetails({ data }:CarDetailsProps) {
               ))}
             </div>
 
-            
-
-
-
-
             <div className="flex flex-col text-left bg-opacity-50 px-6 gap-4">
               <p className="text-md font-medium text-white">{teslaVideosData[currentVideo].heading}</p>
               <p className="text-sm text-white">{teslaVideosData[currentVideo].text}</p>
@@ -292,18 +259,9 @@ function CarDetails({ data }:CarDetailsProps) {
               <div className="relative flex justify-center items-end mt-10 flex-col">
                 <div className="flex justify-center flex-col bg-cover bg-center h-[65vh]" style={{ backgroundImage: `url(${plaid5Mobile})` }} >
                   <div className="flex justify-center items-center gap-3 self-start text-white  mb-24 text-center w-screen h-screen mt-[32rem] px-5">
-                    <div className="flex flex-col">
-                      <p className='font-medium text-xl'>{data.power}</p>
-                      <p className='text-xs'>Vehicle Power‡</p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className='font-medium text-xl'>{data.yearOfManufacture}</p>
-                      <p className='text-xs'>Year Of Manufacture</p>
-                    </div>
-                    <div className="flex flex-col">
-                      <p className='font-medium text-xl'>{data.ZeroToHundred}</p>
-                      <p className='text-xs'>0-100 km/h</p>
-                    </div>
+                    <CarDetailsStats heading={data.power} paragraph={'Vehicle Power‡'}/>
+                    <CarDetailsStats heading={data.yearOfManufacture} paragraph={'Year Of Manufacture'}/>
+                    <CarDetailsStats heading={data.ZeroToHundred} paragraph={'0-100 km/h'}/>
                   </div>
                 </div>
                 <div className="flex flex-col justify-start items-start gap-1 text-left text-black bg-white p-5">
@@ -387,18 +345,9 @@ function CarDetails({ data }:CarDetailsProps) {
                   />
                   <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-center">
                     <div className="flex justify-center items-center gap-3 text-white text-center mb-24 mt-[32rem] px-2">
-                      <div className="flex flex-col">
-                        <p className="font-medium">634 km</p>
-                        <p className="text-xs">Range (WLTP)</p>
-                      </div>
-                      <div className="flex flex-col">
-                        <p className="font-medium">15 min</p>
-                        <p className="text-xs">Recharge up to 322 km</p>
-                      </div>
-                      <div className="flex flex-col">
-                        <p className="font-medium">45,000+</p>
-                        <p className="text-xs">Global Supercharges</p>
-                      </div>
+                      <CarDetailsStats heading={'634 km'} paragraph={'Range (WLTP)'}/>
+                      <CarDetailsStats heading={'15 min'} paragraph={'Recharge up to 322 km'}/>
+                      <CarDetailsStats heading={'45,00+'} paragraph={'Global Supercharges'}/>
                     </div>
                   </div>
                 </div>
@@ -407,6 +356,7 @@ function CarDetails({ data }:CarDetailsProps) {
               
             </div>
             <div className="flex flex-col justify-start items-start gap-32 text-left text-black bg-white p-5">
+              
               <div className="flex-col">
                 <p className='text-md'>Range</p>
                 <p className='font-semibold mb-2 text-xl'>Go Anywhere</p>

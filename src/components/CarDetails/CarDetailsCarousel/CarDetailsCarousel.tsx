@@ -9,7 +9,7 @@ const ResponsiveCarousel = ({ images }) => {
     setSelectedImageIndex(indx);
   };
 
-  const renderArrow = () => null; // Return null to hide the Next Slide button
+  const renderArrow = () => null; 
 
   return (
     <div className="flex items-center justify-center w-[100vw]">
