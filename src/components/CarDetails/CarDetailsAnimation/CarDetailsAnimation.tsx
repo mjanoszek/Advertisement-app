@@ -3,7 +3,15 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import ReactPlayer from 'react-player';
 
-const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl }) => {
+
+interface CarDetailsAnimationProps {
+  imageSrc: string | null,
+  heading: string,
+  paragraph: string,
+  showVideo: boolean,
+  videoUrl: string | null,
+}
+const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl }: CarDetailsAnimationProps) => {
   const [ref, inView] = useInView({ threshold: 1 });
   const animation = useAnimation();
 
@@ -17,15 +25,30 @@ const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl
 
   return (
     <>
-      {showVideo && (
+      {showVideo && videoUrl !== null && (
         <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={animation}>
-          <ReactPlayer className="h-full w-full object-cover" url={videoUrl} playing muted loop width="100%" height="100%" />
+          <ReactPlayer
+            className="h-full w-full object-cover"
+            url={videoUrl}
+            playing
+            muted
+            loop
+            width="100%"
+            height="100%"
+          />
         </motion.div>
       )}
 
-      <motion.img ref={ref} src={imageSrc} initial={{ opacity: 0, y: 50 }} animate={animation} />
+      {imageSrc !== null && (
+        <motion.img ref={ref} src={imageSrc} initial={{ opacity: 0, y: 50 }} animate={animation} />
+      )}
 
-      <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={animation} className="flex flex-col text-left bg-opacity-50 px-6 gap-4">
+      <motion.div
+        ref={ref}
+        initial={{ opacity: 0, y: 50 }}
+        animate={animation}
+        className="flex flex-col text-left bg-opacity-50 px-6 gap-4"
+      >
         <p className="text-md font-medium text-white">{heading}</p>
         <p className="text-sm text-white">{paragraph}</p>
       </motion.div>
