@@ -1,6 +1,10 @@
 import React from 'react';
 
-function CarDetailsStats({ heading, paragraph }) {
+interface CarDetailsStatsProps {
+  heading: string,
+  paragraph: string
+}
+function CarDetailsStats({ heading, paragraph }: CarDetailsStatsProps) {
   return (
     <div className="flex flex-col">
       <p className='font-medium text-md'>{heading}</p>
