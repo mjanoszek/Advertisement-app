@@ -20,7 +20,7 @@ function CarDetailsVideoCarousel({ videoData }: CarDetailsVideoCarouselProps ) {
 
   return (
     <div> 
-      <div className="absolute top-10 min-[600px]:px-4">
+      <div className="absolute top-10 min-[600px]:px-4 lg:px-64">
         <AnimatePresence mode='wait'>
           <motion.div
             key={currentVideo}
@@ -48,7 +48,7 @@ function CarDetailsVideoCarousel({ videoData }: CarDetailsVideoCarouselProps ) {
 
      
       <div className="flex justify-center items-center">
-        <div className="flex gap-10 mt-[65vw] md:mt-[55vw]">
+        <div className="flex gap-10 mt-[65vw] md:mt-[55vw] lg:mt-[40vw]">
           <div className="flex flex-col px-4 min-[600px]:px-8 min-[900px]:px-[30vw]">
             <div className="flex py-8 ">
               {videoData.map((item, indx) => (
