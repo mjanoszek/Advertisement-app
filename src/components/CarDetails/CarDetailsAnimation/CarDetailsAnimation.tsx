@@ -11,8 +11,17 @@ interface CarDetailsAnimationProps {
   paragraph: string | null,
   showVideo: boolean | null,
   videoUrl: string | null,
+  isReversed: boolean | null
 }
-const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl }: CarDetailsAnimationProps) => {
+const CarDetailsAnimation = (
+  { 
+    imageSrc, 
+    heading, 
+    paragraph, 
+    showVideo, 
+    videoUrl,
+    isReversed,
+  }: CarDetailsAnimationProps) => {
   const [ref, inView] = useInView({ threshold: 1 });
   const animation = useAnimation();
 
@@ -29,9 +38,9 @@ const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl
   return (
     <>
       {showVideo && videoUrl !== null && (
-        <div className={`flex  ${isMobile ? 'flex-col gap-8' : 'flex-row-reverse gap-4 px-8 '} min-[900px]:px-28`}>
-          <div className="flex">
-            <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={animation}  >
+        <div className={`flex ${isMobile ? 'flex-col gap-8 px-0' : isReversed ? 'flex-row' : 'flex-row-reverse'} gap-4 px-8 min-[900px]:px-28 lg:px-72`}>
+          <div className="flex flex-1">
+            <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={animation}>
               <ReactPlayer
                 className="h-full w-full object-cover flex"
                 url={videoUrl}
@@ -47,7 +56,7 @@ const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl
             ref={ref}
             initial={{ opacity: 0, y: 50 }}
             animate={animation}
-            className="flex flex-col text-left justify-center bg-opacity-50 px-6 gap-4 min-[600px]:pr-6 min-[600px]:px-0 "
+            className="flex flex-col text-left justify-center bg-opacity-50 px-6 min-[600px]:pl-6 gap-4 flex-1"
           >
             <p className="text-md font-medium text-white">{heading}</p>
             <p className="text-sm text-white">{paragraph}</p>
@@ -55,21 +64,25 @@ const CarDetailsAnimation = ({ imageSrc, heading, paragraph, showVideo, videoUrl
         </div>
       )}
       {imageSrc !== null && (
-        <div className={`flex ${isMobile ? 'flex-col gap-8' : 'flex-row gap-4 px-8' } min-[900px]:px-28`}>
-          <div className="flex">
-            <motion.img ref={ref} src={imageSrc} initial={{ opacity: 0, y: 50 }} animate={animation}  />
+        <div className={`flex ${isMobile ? 'flex-col gap-8 px-0' : isReversed ? 'flex-row' : 'flex-row-reverse'} w-full gap-4 px-8 min-[900px]:px-28 lg:px-72`}>
+          <div className="flex flex-1">
+            <motion.img ref={ref} src={imageSrc} initial={{ opacity: 0, y: 50 }} animate={animation} />
           </div>
           <motion.div
             ref={ref}
             initial={{ opacity: 0, y: 50 }}
             animate={animation}
-            className="flex flex-col text-left justify-center bg-opacity-50 px-6 min-[600px]:pl-6 gap-4"
+            className="flex flex-col text-left justify-center bg-opacity-50 px-6 min-[600px]:pl-6 gap-4 flex-1"
           >
             <p className="text-md font-medium text-white">{heading}</p>
             <p className="text-sm text-white">{paragraph}</p>
           </motion.div>
         </div>
       )}
+
+
+
+     
 
       
     </>
