@@ -1,13 +1,17 @@
 import React from 'react';
 
-function secondaryButton({ theme }) {
+interface SecondaryButtonProps {
+  theme: string,
+  heading: string
+}
+function SecondaryButton({ theme, heading }: SecondaryButtonProps) {
   return (
     <button
       type="button"
-      className={`border-2 rounded-md w-full p-2 px-14 mt-2 font-medium min-[600px]:w-fit ${theme == 'dark' ? 'bg-black border-white text-white' : 'bg-white border-white text-white' } `}>
-      Order now
+      className={`border-2 rounded-md w-full p-2 px-14 mt-2 font-medium min-[600px]:w-fit ${theme == 'light' ? 'bg-white border-black' : 'bg-black border-white text-white'}`}>
+      {heading}
     </button>
   );
 }
 
-export default secondaryButton;
+export default SecondaryButton;
