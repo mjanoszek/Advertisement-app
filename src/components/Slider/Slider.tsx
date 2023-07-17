@@ -58,6 +58,7 @@ export const  Slider = ({ image, isMobile }: SliderProps ) => {
             exit="exit"
             className={
               `absolute shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]
+              rounded-t-md
               `
             }
 
