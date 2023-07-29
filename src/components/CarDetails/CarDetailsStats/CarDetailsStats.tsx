@@ -1,8 +1,7 @@
 import React from 'react';
-import { IconType } from 'react-icons/lib';
 
 interface CarDetailsStatsProps {
-  heading: string | IconType,
+  heading: string | React.ReactNode,
   paragraph: string
 }
 
