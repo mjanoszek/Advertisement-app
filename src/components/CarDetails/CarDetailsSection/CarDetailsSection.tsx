@@ -6,7 +6,7 @@ import TertiaryButton from '../CarDetailsButtons/TertiaryButton';
 interface CarDetailsSectionProps {
   title: string,
   heading: string,
-  description: string,
+  description: string | React.ReactNode,
   backgroundColor: string, 
   textColor: string, 
   buttonTheme: string,
@@ -25,7 +25,6 @@ function CarDetailsSection(
   }: CarDetailsSectionProps,
 ) {
   const isDesktop = useMediaQuery({ minWidth: 900 });
-
   return (
     <div className={`flex flex-col justify-start items-start gap-2 text-left ${textColor} ${backgroundColor} p-5 px-5 min-[900px]:px-28 lg:px-36 lg:p-10`}>
       {!isDesktop ?
@@ -51,7 +50,7 @@ function CarDetailsSection(
 
           </div>
           <div className="flex flex-1">
-            <p className='text-sm'>{description}</p>
+            <p>{description}</p>
           </div>
         </div> 
       }
