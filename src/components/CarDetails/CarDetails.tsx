@@ -57,7 +57,7 @@ import CarDetailsSection from './CarDetailsSection/CarDetailsSection';
 import CarDetailsTextAnimation from './CarDetailsTextAnimation/CarDetailsTextAnimation';
 import SecondaryButton from './CarDetailsButtons/SecondaryButton';
 import { FaSmileWink } from 'react-icons/fa';
-import SpecificationsShowcase from '../SpecificationsShowcase/SpecificationsShowcase';
+import SpecificationsShowcase from './SpecificationsShowcase/SpecificationsShowcase';
 
 interface CarDetailsProps {
   data: {
