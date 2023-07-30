@@ -45,9 +45,14 @@ export { default as amsterdamToBrussels } from './amsterdamToBrussels.svg';
 export { default as brusselsToParis } from './brusselsToParis.svg';
 export { default as munichToZurich } from './munichToZurich.svg';
 export { default as osloToGothenburg } from './osloToGothenburg.svg';
-export { default as plaidModel } from './plaidModel.jpeg';
 export { default as plaidAutopilot } from './plaidAutopilot.jpeg';
 export { default as plaidAutopilotDesktop } from './plaidAutopilotDesktop.jpeg';
 export { default as plaidVideo7Desktop } from './plaidVideo7Desktop.mp4';
 export { default as plaidVideo7 } from './plaidVideo7.mp4';
+
+
+export { default as plaidAutopark } from './plaidAutopark.mp4';
+export { default as plaidLaneChange } from './plaidLaneChange.mp4';
+export { default as plaidNavigateAutopilot } from './plaidNavigateAutopilot.mp4';
+export { default as plaidSummon } from './plaidSummon.mp4';
 
