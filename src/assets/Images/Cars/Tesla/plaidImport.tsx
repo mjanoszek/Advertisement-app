@@ -1,4 +1,3 @@
-
 export { default as plaid1 } from './plaid1.jpeg';
 export { default as plaid2 } from './plaid2.jpeg';
 export { default as plaid3 } from './plaid3.jpeg';
@@ -50,9 +49,7 @@ export { default as plaidAutopilotDesktop } from './plaidAutopilotDesktop.jpeg';
 export { default as plaidVideo7Desktop } from './plaidVideo7Desktop.mp4';
 export { default as plaidVideo7 } from './plaidVideo7.mp4';
 
-
 export { default as plaidAutopark } from './plaidAutopark.mp4';
 export { default as plaidLaneChange } from './plaidLaneChange.mp4';
 export { default as plaidNavigateAutopilot } from './plaidNavigateAutopilot.mp4';
 export { default as plaidSummon } from './plaidSummon.mp4';
-

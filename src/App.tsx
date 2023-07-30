@@ -10,21 +10,20 @@ import Watches from './pages/Watches';
 import NotFound from './pages/NotFound';
 import ProductProfile from './pages/ProductProfile';
 
-
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/AddAd" element={<AddAd />} />
-        <Route path="/Favorites" element={<Favorites />} />
-        <Route path="/Properties" element={<Properties />} />
-        <Route path="/Properties/:propertyID" element={<ProductProfile />} />
-        <Route path="/PrivateJets" element={<PrivateJets />} />
-        <Route path="/Watches" element={<Watches />} />
-        <Route path="/Cars" element={<Cars />} />
-        <Route path="/Cars/:carID" element={<ProductProfile />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/AddAd' element={<AddAd />} />
+        <Route path='/Favorites' element={<Favorites />} />
+        <Route path='/Properties' element={<Properties />} />
+        <Route path='/Properties/:propertyID' element={<ProductProfile />} />
+        <Route path='/PrivateJets' element={<PrivateJets />} />
+        <Route path='/Watches' element={<Watches />} />
+        <Route path='/Cars' element={<Cars />} />
+        <Route path='/Cars/:carID' element={<ProductProfile />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
     </Router>
   );

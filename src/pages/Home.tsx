@@ -5,8 +5,8 @@ import Categories from '../components/Categories/Categories';
 function Home() {
   return (
     <>
-      <Navbar isAbsolute={true}/>
-      <Categories/>
+      <Navbar isAbsolute={true} />
+      <Categories />
     </>
   );
 }

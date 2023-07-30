@@ -3,7 +3,6 @@ import { useInView } from 'react-intersection-observer';
 import React, { useEffect } from 'react';
 
 function CarDetailsTextAnimation({ heading, textSize }) {
-
   const [ref, inView] = useInView({ threshold: 1 });
   const animation = useAnimation();
 
@@ -16,11 +15,7 @@ function CarDetailsTextAnimation({ heading, textSize }) {
   }, [animation, inView]);
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 50 }}
-      animate={animation}
-    >
+    <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={animation}>
       <p className={`text-${textSize} font-medium `}>{heading}</p>
     </motion.div>
   );

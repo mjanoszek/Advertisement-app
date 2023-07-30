@@ -6,7 +6,12 @@ import plaid5 from './plaid5Desktop.jpeg';
 import plaid6 from './plaid6Desktop.jpeg';
 import plaid7 from './plaid7Desktop.jpeg';
 
-
 export const plaidMobile = [
-  plaid1, plaid2, plaid3, plaid4, plaid5, plaid6, plaid7,
+  plaid1,
+  plaid2,
+  plaid3,
+  plaid4,
+  plaid5,
+  plaid6,
+  plaid7,
 ];

@@ -2,33 +2,38 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 interface NavbarProps {
-  isAbsolute: boolean,
+  isAbsolute: boolean;
 }
 
 function Navbar({ isAbsolute }: NavbarProps) {
-  
   return (
-    <div className={`${isAbsolute ? 'absolute z-10 text-white' : 'relative text-black'} p-5 flex items-center min-w-full `}>
-
+    <div
+      className={`${
+        isAbsolute ? 'absolute z-10 text-white' : 'relative text-black'
+      } flex min-w-full items-center p-5 `}
+    >
       <Link to='/'>
-        <h1 className='text-xl sm:text-3xl tracking-wider font-medium'> XYZ</h1>
+        <h1 className='text-xl font-medium tracking-wider sm:text-3xl'> XYZ</h1>
       </Link>
-       
-      <div className='flex justify-end w-full gap-5 xs:gap-5 md:gap-20 '>
-        <p className='text-xl sm:text-2xl tracking-wider relative w-max one '>
-          <Link to='/AddAd'>
-            Add Ad
-          </Link>
-          <span className={`absolute -bottom-1 left-0 w-0 transition-all h-0.5 ${isAbsolute ?  'bg-white' : 'bg-black'}`}></span>
+
+      <div className='xs:gap-5 flex w-full justify-end gap-5 md:gap-20 '>
+        <p className='one relative w-max text-xl tracking-wider sm:text-2xl '>
+          <Link to='/AddAd'>Add Ad</Link>
+          <span
+            className={`absolute -bottom-1 left-0 h-0.5 w-0 transition-all ${
+              isAbsolute ? 'bg-white' : 'bg-black'
+            }`}
+          ></span>
         </p>
-        
-        <p className=' text-xl sm:text-2xl tracking-wider relative w-max one'>
-          <Link to='/Favorites'>
-            Favorites
-          </Link>
-          <span className={`absolute -bottom-1 left-0 w-0 transition-all h-0.5 ${isAbsolute ?  'bg-white' : 'bg-black'}`}></span>
+
+        <p className=' one relative w-max text-xl tracking-wider sm:text-2xl'>
+          <Link to='/Favorites'>Favorites</Link>
+          <span
+            className={`absolute -bottom-1 left-0 h-0.5 w-0 transition-all ${
+              isAbsolute ? 'bg-white' : 'bg-black'
+            }`}
+          ></span>
         </p>
-        
       </div>
     </div>
   );

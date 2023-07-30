@@ -1,60 +1,63 @@
 import React from 'react';
-import ReactPlayer from 'react-player';
 import Navbar from '../Navbar/Navbar';
-import CarDetailsCarousel from '../CarDetails/CarDetailsCarousel/CarDetailsCarousel';
-import { 
-  plaidModel, 
-  plaidAutopilot,  
+import CarDetailsCarousel from './CarDetailsCarousel/CarDetailsCarousel';
+import {
+  plaidAutopilot,
   plaidAutopilotDesktop,
-  amsterdamToBrussels, 
-  brusselsToParis, 
-  munichToZurich, 
-  osloToGothenburg, 
-  plaid1, 
-  plaid1Desktop, 
-  plaid2,
-  plaid2Desktop,
-  plaid3, 
-  plaid3Desktop, 
-  plaid4, 
+  amsterdamToBrussels,
+  brusselsToParis,
+  munichToZurich,
+  osloToGothenburg,
+  plaid1,
+  plaid1Desktop,
+  plaid3,
+  plaid3Desktop,
+  plaid4,
   plaid4Desktop,
-  plaid5, 
+  plaid5,
   plaid5Desktop,
-  plaid6, 
-  plaid6Desktop, 
-  plaid7, 
-  plaid7Desktop, 
-  plaidVideo1Desktop, 
-  plaidVideo2Desktop, 
-  plaidVideo3Desktop, 
-  plaidVideo4Desktop, 
+  plaid6,
+  plaid6Desktop,
+  plaid7,
+  plaid7Desktop,
+  plaidVideo1Desktop,
+  plaidVideo2Desktop,
+  plaidVideo3Desktop,
+  plaidVideo4Desktop,
   plaidVideo5Desktop,
   plaidVideo6Desktop,
-  plaidVideo7Desktop, 
-  plaidVideo1, 
-  plaidVideo2, 
-  plaidVideo3, 
-  plaidVideo4, 
-  plaidVideo5, 
-  plaidVideo6, 
+  plaidVideo7Desktop,
+  plaidVideo1,
+  plaidVideo2,
+  plaidVideo3,
+  plaidVideo4,
+  plaidVideo5,
+  plaidVideo6,
   plaidVideo7,
-  plaidPowertrain1, 
-  plaidPowertrain1Desktop, 
-  plaidPowertrain2, 
-  plaidPowertrain2Desktop, 
-  plaidStyle, 
+  plaidPowertrain1,
+  plaidPowertrain1Desktop,
+  plaidPowertrain2,
+  plaidPowertrain2Desktop,
+  plaidStyle,
   plaidStyleDesktop,
   plaidAerodynamics,
   plaidAerodynamicsDesktop,
   plaidWheels,
   plaidWheelsDesktop,
+  plaidAutopark,
+  plaidLaneChange,
+  plaidNavigateAutopilot,
+  plaidSummon,
 } from '../../assets/Images/Cars/Tesla/plaidImport';
 import CarDetailsAnimation from './CarDetailsAnimation/CarDetailsAnimation';
-import CarDetailsStats from './CarDetailsStats/CarDetailsStats';
 import CarDetailsVideoCarousel from './CarDetailsVideoCarousel/CarDetailsVideoCarousel';
-import { MdOutlineCamera } from 'react-icons/md';
 import { useMediaQuery } from 'react-responsive';
-
+import CarDetailsBackgroundContent from './CarDetailsBackgroundContent/CarDetailsBackgroundContent';
+import CarDetailsSection from './CarDetailsSection/CarDetailsSection';
+import CarDetailsTextAnimation from './CarDetailsTextAnimation/CarDetailsTextAnimation';
+import SecondaryButton from './CarDetailsButtons/SecondaryButton';
+import { FaSmileWink } from 'react-icons/fa';
+import SpecificationsShowcase from '../SpecificationsShowcase/SpecificationsShowcase';
 
 interface CarDetailsProps {
   data: {
@@ -67,38 +70,32 @@ interface CarDetailsProps {
 }
 
 function CarDetails({ data }: CarDetailsProps) {
-  
   const isMobile = useMediaQuery({ maxWidth: 600 });
+
   const plaidBackground = isMobile ? plaid1 : plaid1Desktop;
   const interiorBackground = isMobile ? plaid3 : plaid3Desktop;
-
   const Video1 = isMobile ? plaidVideo1 : plaidVideo1Desktop;
   const Video2 = isMobile ? plaidVideo2 : plaidVideo2Desktop;
   const Video3 = isMobile ? plaidVideo3 : plaidVideo3Desktop;
   const Video4 = isMobile ? plaidVideo4 : plaidVideo4Desktop;
   const Video5 = isMobile ? plaidVideo5 : plaidVideo5Desktop;
-
   const stayConnectedImage = isMobile ? plaid6 : plaid6Desktop;
   const immersiveSoundVideo = isMobile ? plaidVideo6 : plaidVideo6Desktop;
   const spaceImage = isMobile ? plaid7 : plaid7Desktop;
-
   const plaidBackground2 = isMobile ? plaid5 : plaid5Desktop;
-
-
   const powertrainImage = isMobile ? plaidPowertrain1 : plaidPowertrain1Desktop;
-  const powertrainImage2 = isMobile ? plaidPowertrain2 : plaidPowertrain2Desktop;
-
+  const powertrainImage2 = isMobile
+    ? plaidPowertrain2
+    : plaidPowertrain2Desktop;
   const plaidBackground3 = isMobile ? plaid4 : plaid4Desktop;
-
   const plaidWheelsImage = isMobile ? plaidWheels : plaidWheelsDesktop;
-  const plaidAerodynamicsImage = isMobile ? plaidAerodynamics : plaidAerodynamicsDesktop;
+  const plaidAerodynamicsImage = isMobile
+    ? plaidAerodynamics
+    : plaidAerodynamicsDesktop;
   const plaidStyleImage = isMobile ? plaidStyle : plaidStyleDesktop;
-
-  const travelVideo = isMobile ? plaidVideo7 : plaidVideo7Desktop; 
-
+  const travelVideo = isMobile ? plaidVideo7 : plaidVideo7Desktop;
   const plaidAutopilotImage = isMobile ? plaidAutopilot : plaidAutopilotDesktop;
 
-  
   const teslaVideosData = [
     {
       url: Video1,
@@ -127,8 +124,30 @@ function CarDetails({ data }: CarDetailsProps) {
     },
   ];
 
+  const autopilotFeaturesVideos = [
+    {
+      url: plaidAutopark,
+      heading: 'Autopark',
+      text: 'Parallel and perpendicular parking with a single touch',
+    },
+    {
+      url: plaidNavigateAutopilot,
+      heading: 'Navigate on Autopilot',
+      text: 'Active guidance from on-ramp to off-ramp',
+    },
+    {
+      url: plaidLaneChange,
+      heading: 'Auto Lane change',
+      text: 'Automatically change lanes while driving on the highway',
+    },
+    {
+      url: plaidSummon,
+      heading: 'Summon',
+      text: 'Automatically retrieve your car',
+    },
+  ];
 
-  const teslaImagesData = [
+  const powerTrainImages = [
     {
       url: powertrainImage,
       heading: 'Model S',
@@ -145,267 +164,316 @@ function CarDetails({ data }: CarDetailsProps) {
     },
   ];
 
-
-
-  const images = [
+  const travelImages = [
     {
+      url: munichToZurich,
       name: 'Munich to Zurich',
       distance: '311 km',
-      url: munichToZurich,
     },
     {
+      url: amsterdamToBrussels,
       name: 'Amsterdam to Brussels',
       distance: '203 km',
-      url: amsterdamToBrussels,
     },
     {
+      url: brusselsToParis,
       name: 'Brussels to Paris',
       distance: '320 km',
-      url: brusselsToParis,
     },
     {
+      url: osloToGothenburg,
       name: 'Oslo to Gothenburg',
       distance: '295 km',
-      url: osloToGothenburg,
     },
   ];
 
-
- 
   return (
     <>
       <Navbar isAbsolute={true} />
-     
-      <div className="flex justify-center flex-col bg-cover bg-center h-screen shadow-[inset_0_-90px_90px_0_rgba(0,0,0,1)]" style={{ backgroundImage: `url(${plaidBackground})` }} >
-        <div className="flex flex-col text-center self-center text-gray-900 mt-36 h-screen ">
-          <p className='text-4xl font-medium '>Model S</p>
-          <p className='text-xl font-normal '>Plaid</p>
-        </div>
-        <div className="flex justify-center items-center gap-3 mb-8  text-white text-center w-screen px-5">
-          <div className="text-lg flex gap-[7vw]">
-            <CarDetailsStats heading={data.range} paragraph={'Range (WLTP)'}/>
-            <CarDetailsStats heading={data.ZeroToHundred} paragraph={'0-100 km/h'}/>
-            <CarDetailsStats heading={data.topSpeed} paragraph={'Top Speed'}/>
-          </div>
-        </div>
-        <div className="flex justify-center items-center  text-white text-center w-screen px-5">
-          <button type='button' className='border-2 bg-white text-black font-medium rounded-md w-full py-2 mx-5'>Order Now</button>
-        </div>
 
+      <CarDetailsBackgroundContent
+        data={data}
+        backgroundImageSource={plaidBackground}
+        heading={'Model S'}
+        paragraph={'Plaid'}
+        showButton={true}
+        firstStat={data.range}
+        secondStat={data.ZeroToHundred}
+        thirdStat={data.topSpeed}
+        firstStatParagraph={'Range (WLTP)'}
+        secondStatParagraph={'0-100 km/h'}
+        thirdStatParagraph={'Top Speed†'}
+        contentHeight={'h-screen'}
+        buttonType={'primary'}
+        backgroundVideoSource={null}
+      />
+      <div className='shadow-[inset 0 -360px calc(69px + (100vh - 768px) * 0.05) 0 rgba(0, 0, 0, 0.6)] flex flex-col items-center justify-center self-center bg-black py-16 text-center text-white'>
+        <CarDetailsTextAnimation
+          heading={'Interior of the Future'}
+          textSize={'2xl'}
+        />
       </div>
+      <div
+        className='shadow-[inset 0 -360px max(69px, 5vh) 0  rgba(0, 0, 0, 0.6)] flex h-screen flex-col justify-center bg-cover bg-center'
+        style={{ backgroundImage: `url(${interiorBackground})` }}
+      ></div>
 
-      <div className="flex flex-col items-center justify-center text-center self-center text-white bg-black py-16 shadow-[inset 0 -360px calc(69px + (100vh - 768px) * 0.05) 0 rgba(0, 0, 0, 0.6)]">
-        <div className="text-xl">
-          <CarDetailsAnimation
-            imageSrc={null}
-            heading={'Interior of the future S'}
-            paragraph={null}
-            showVideo={null}
-            videoUrl={null}
-          />
-        </div>
-      </div>
-      <div className="flex justify-center flex-col bg-cover bg-center h-screen  shadow-[inset 0 -360px max(69px, 5vh) 0 rgba(0, 0, 0, 0.6)]" style={{ backgroundImage: `url(${interiorBackground})` }} >
-      </div>
+      <div className='relative flex flex-col justify-center bg-black text-white'>
+        <div className='flex h-full flex-col self-center text-center '>
+          <CarDetailsVideoCarousel videoData={teslaVideosData} />
 
-
-
-      <div className="flex justify-center flex-col h-screen bg-black " >
-        <div className="flex flex-col text-center self-center text-white h-screen relative mt-16">
-        
-          <CarDetailsVideoCarousel videoData={teslaVideosData}/>
-
-
-          <div className="flex flex-col bg-black gap-14 pt-24">
-
+          <div className='flex flex-col gap-14 bg-black pt-24 min-[600px]:gap-6'>
             <CarDetailsAnimation
               imageSrc={stayConnectedImage}
-              heading="Stay Connected"
-              paragraph="Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging."
-              showVideo={false} 
-              videoUrl={null}              
+              heading='Stay Connected'
+              paragraph='Instantly connect with multi-device Bluetooth, or fast charge devices with wireless and 36-watt USB-C charging.'
+              showVideo={false}
+              videoUrl={null}
+              isReversed={true}
             />
 
             <CarDetailsAnimation
-              imageSrc={immersiveSoundVideo} 
-              heading="Immersive Sound"
-              paragraph="A 22-speaker, 960-watt audio system with Active Road Noise Reduction offers immersive listening and studio-grade sound quality."
+              imageSrc={null}
+              heading='Immersive Sound'
+              paragraph='A 22-speaker, 960-watt audio system with Active Road Noise Reduction offers immersive listening and studio-grade sound quality.'
               showVideo={true}
-              videoUrl={plaidVideo6}
+              videoUrl={immersiveSoundVideo}
+              isReversed={false}
             />
 
             <CarDetailsAnimation
               imageSrc={spaceImage}
-              heading="Room for Everything"
-              paragraph="With front and rear trunks and fold-flat seats you can fit your bike without taking the wheel off—and your luggage too."
-              showVideo={false} 
+              heading='Room for Everything'
+              paragraph='With front and rear trunks and fold-flat seats you can fit your bike without taking the wheel off—and your luggage too.'
+              showVideo={false}
               videoUrl={null}
+              isReversed={true}
+            />
+          </div>
+        </div>
+      </div>
+
+      <div className='flex w-full flex-col bg-black pt-24'>
+        <CarDetailsBackgroundContent
+          data={data}
+          backgroundImageSource={plaidBackground2}
+          heading={null}
+          paragraph={null}
+          showButton={false}
+          firstStat={data.power}
+          secondStat={data.yearOfManufacture}
+          thirdStat={data.ZeroToHundred}
+          firstStatParagraph={'Vehicle Power‡'}
+          secondStatParagraph={'Year Of Manufacture'}
+          thirdStatParagraph={'0-100 km/h'}
+          contentHeight={'h-[65vh]'}
+          buttonType={null}
+          backgroundVideoSource={null}
+        />
+      </div>
+
+      <CarDetailsSection
+        backgroundColor={'bg-white'}
+        textColor={'text-black'}
+        heading={'Beyond Ludicrous'}
+        description={
+          'Model S Plaid has the quickest acceleration of any vehicle in production.Updated battery architecture for all Model S trims enables back-to-back track runs without performance degradation.'
+        }
+        title={'Plaid'}
+        buttonTheme={'light'}
+        showTertiaryButton={false}
+      />
+
+      <div className='flex flex-col bg-gray-100 py-24 min-[900px]:px-28 lg:px-36'>
+        <div className='mb-10 flex flex-col gap-2 px-5'>
+          <p className='mb-2 text-3xl font-medium '>Electric Powertrain</p>
+          <p className='text-sm lg:text-lg'>
+            Model S platforms unite powertrain and battery technologies for
+            unrivaled performance, range and efficiency. New module and pack
+            thermal architecture allows faster charging and gives you more power
+            and endurance in all conditions.
+          </p>
+        </div>
+        <CarDetailsCarousel carouselData={powerTrainImages} type={'images'} />
+        <div className='flex h-full justify-center py-10'>
+          <p className='text-xs text-gray-600'>* With rollout subtracted</p>
+        </div>
+      </div>
+
+      <div
+        className='shadow-[inset 0 -360px max(69px, 5vh) 0  rgba(0, 0, 0, 0.6)] flex h-[65vh] flex-col justify-center bg-cover bg-center'
+        style={{ backgroundImage: `url(${plaidBackground3})` }}
+      ></div>
+      <div className='flex flex-col'>
+        <CarDetailsSection
+          backgroundColor={'bg-black'}
+          textColor={'text-white'}
+          title={'Exterior'}
+          heading={'Designed for Efficiency'}
+          description={
+            'With a drag coefficient of just .208 Cd, the lowest on the planet, Model S is built for speed, endurance and range. Improved aerodynamics and a wider chassis offer more responsive performance so you can take corners quicker and with more confidence.'
+          }
+          buttonTheme={'dark'}
+          showTertiaryButton={false}
+        />
+
+        <div className='relative flex flex-col justify-center bg-black text-white'>
+          <div className='flex flex-col gap-14 bg-black pt-24 min-[600px]:gap-6'>
+            <CarDetailsAnimation
+              imageSrc={plaidWheelsImage}
+              heading='Relentless Performance'
+              paragraph='Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road.'
+              showVideo={false}
+              videoUrl={null}
+              isReversed={false}
             />
 
+            <CarDetailsAnimation
+              imageSrc={plaidAerodynamicsImage}
+              heading='Optimized Aerodynamics'
+              paragraph='Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth.'
+              showVideo={false}
+              videoUrl={null}
+              isReversed={true}
+            />
 
-
-            <div className="relative flex justify-center items-end mt-10 flex-col">
-              <div className="flex justify-center flex-col bg-cover bg-center h-[65vh]" style={{ backgroundImage: `url(${plaidBackground2})` }} >
-                <div className="flex gap- justify-center text-white  mb-24  w-screen h-screen mt-[32rem] px-5 ">
-                  <div className="text-lg flex gap-[7vw]">
-                    <CarDetailsStats heading={data.power} paragraph={'Vehicle Power‡'}/>
-                    <CarDetailsStats heading={data.yearOfManufacture} paragraph={'Year Of Manufacture'}/>
-                    <CarDetailsStats heading={data.ZeroToHundred} paragraph={'0-100 km/h'}/>
-                  </div>
-                </div>
-              </div>
-              <div className="flex flex-col justify-start items-start gap-1 text-left text-black bg-white p-5">
-                <p className='text-md'>Plaid</p>
-                <p className='font-semibold mb-2 text-xl'>Beyond Ludicrous</p>
-                <p>Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S trims enables back-to-back track runs without performance degradation.</p>
-                <button type='button' className='border-2 border-black rounded-md w-full py-2 mt-5'>Order now</button>
-              </div>
-              <div className="flex flex-col justify-start items-start gap-1 text-left text-black bg-gray-100 px-5 py-14">
-                <p className='font-semibold mb-2 text-xl'>Electric Powertrain</p>
-                <p className='text-md'>Model S platforms unite powertrain and battery technologies for unrivaled performance, range and efficiency. New module and pack thermal architecture allows faster charging and gives you more power and endurance in all conditions.</p>
-                  
-              </div>
-                  
-                
-                
-                
-
-              <div className="flex flex-col items-center justify-center w-full bg-gray-100">
-                <CarDetailsCarousel images={teslaImagesData}/>
-
-                <p className='text-gray-800 text-sm p-5'>* With rollout subtracted</p>
-              </div>
-            </div>
-              
-            <div className="flex flex-col bg-black gap-14 py-10">
-              <div className="flex flex-col">
-                <img src={plaidBackground3} alt='plaidExterior' />
-                <div className="flex flex-col text-left px-6">
-                  <p>Exterior</p>
-                  <p className='font-medium text-2xl'>Designed for Efficiency</p>
-                  <p className='mt-4 font-light'>With a drag coefficient of just .208 Cd, the lowest on the planet, Model S is built for speed, endurance and range. Improved aerodynamics and a wider chassis offer more responsive performance so you can take corners quicker and with more confidence.</p>
-                  <button type='button' className='border-2 border-white rounded-md w-full py-2 mt-5'>Order now</button>
-                </div>
-              </div>
-
-              <CarDetailsAnimation
-                imageSrc={plaidWheelsImage}
-                heading="Relentless Performance"
-                paragraph="Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road."
-                showVideo={false} 
-                videoUrl={null}              
-              />
-
-              <CarDetailsAnimation
-                imageSrc={plaidAerodynamicsImage}
-                heading="Optimized Aerodynamics"
-                paragraph="Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth."
-                showVideo={false} 
-                videoUrl={null}              
-              />
-
-              <CarDetailsAnimation
-                imageSrc={plaidStyleImage}
-                heading="Refined Styling"
-                paragraph="An iconic silhouette meets refreshed, elegant proportions."
-                showVideo={false} 
-                videoUrl={null}              
-              />
-
-            </div>
-
-            {/* <div className="video-wrapper" style={{ position: 'relative', paddingTop: '56.25%' }}>
-              <ReactPlayer
-                url={plaidVideo7}
-                width="100%"
-                height="100%"
-                style={{ position: 'absolute', top: 0, left: 0 }}
-              />
-            </div> */}
-         
-            <div className="flex justify-center flex-col  h-full relative">
-              <div className="h-full w-full">
-                <ReactPlayer
-                  className="h-full w-full object-fill"
-                  url={travelVideo}
-                  playing={true}
-                  muted={true}
-                  loop={true}
-                  width="100%"
-                  height="100%"
-                />
-              </div>
-              <div className="absolute top-0 left-0 w-full h-full flex flex-col items-center justify-end pb-14">
-                <div className="flex gap-3 text-white text-center px-2">
-                  <div className="text-lg flex gap-[7vw]">
-                    <CarDetailsStats heading={'634 km'} paragraph={'Range (WLTP)'}/>
-                    <CarDetailsStats heading={'15 min'} paragraph={'Recharge up to 322 km'}/>
-                    <CarDetailsStats heading={'45,00+'} paragraph={'Global Supercharges'}/>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-              
+            <CarDetailsAnimation
+              imageSrc={plaidStyleImage}
+              heading='Refined Styling'
+              paragraph='An iconic silhouette meets refreshed, elegant proportions.'
+              showVideo={false}
+              videoUrl={null}
+              isReversed={false}
+            />
           </div>
-          <div className="flex flex-col justify-start items-start gap-32 text-left text-black bg-white p-5">
-              
-            <div className="flex-col">
-              <p className='text-md'>Range</p>
-              <p className='font-semibold mb-2 text-xl'>Go Anywhere</p>
-              <p>
-          With up to 634 kilometers of estimated range and access to the world’s largest and most powerful fast charging network, you’ll spend less time plugged in and more time on the road.
-              </p>
-              <button type='button' className='border-2 font-medium border-black rounded-md w-full py-2 mt-5'>Order now</button>
-              <button type='button' className='bg-gray-100 font-medium rounded-md w-full py-2 mt-5'>Find my route</button>
-
-            </div>
-
-            <div className="flex-col">
-              <p className='font-semibold mb-2 text-xl'>Freedom to Travel</p>
-              <p>
-          Enter a destination on your touchscreen and Trip Planner will automatically calculate your route with Superchargers along the way.
-              </p>
-            </div>
-              
-              
-          </div>
-          <div className="flex flex-col">
-            <CarDetailsCarousel images={images}/>
-            <div className="flex flex-col justify-start items-start  text-left text-black bg-white p-5">
-              <button type='button' className='border-2 border-black font-medium rounded-md w-full py-2 mt-5'>Learn more</button>
-            </div>
-          </div>
-
-
-          <div className="flex justify-center flex-col bg-cover bg-center h-[65vh]" >
-            <div className="flex justify-center  items-center text-black   text-center w-screen h-screen  px-5">
-              <p>in progress</p>
-            </div>
-          </div>
-
-          <div className="flex justify-center flex-col bg-cover bg-center h-[65vh]" style={{ backgroundImage: `url(${plaidAutopilotImage})` }} >
-            <div className="flex justify-center items-center gap-3 text-black  mb-24 w-screen h-screen mt-[32rem] px-5">
-              <div className="text-lg flex gap-[7vw]">
-                <CarDetailsStats heading={'360°'} paragraph={'Degrees of Visibility'}/>
-                <CarDetailsStats heading={'250 m'} paragraph={'Of Powerful Visual Processing'}/>
-                <CarDetailsStats heading={<MdOutlineCamera/>} paragraph={'Tesla Vison'}/>
-              </div>
-            </div>
-          </div>
-          
-          
         </div>
-      
-      
       </div>
+
+      <div className='flex w-full flex-col bg-black pt-24'>
+        <CarDetailsBackgroundContent
+          data={data}
+          backgroundImageSource={null}
+          backgroundVideoSource={travelVideo}
+          heading={null}
+          paragraph={null}
+          showButton={false}
+          firstStat={data.power}
+          secondStat={data.yearOfManufacture}
+          thirdStat={data.ZeroToHundred}
+          firstStatParagraph={'Vehicle Power‡'}
+          secondStatParagraph={'Year Of Manufacture'}
+          thirdStatParagraph={'0-100 km/h'}
+          contentHeight={'h-[80vh]'}
+          buttonType={null}
+        />
+      </div>
+
+      <div className='py-10'>
+        <CarDetailsSection
+          backgroundColor={'bg-white'}
+          textColor={'text-black'}
+          title={'Range'}
+          heading={'Go Anywhere'}
+          description={
+            'With up to 634 kilometers of estimated range and access to the world’s largest and most powerful fast charging network, you’ll spend less time plugged in and more time on the road.'
+          }
+          buttonTheme={'light'}
+          showTertiaryButton={true}
+        />
+      </div>
+
+      <div className='flex flex-col bg-white py-12 min-[900px]:px-28 lg:px-36'>
+        <div className='mb-10 flex flex-col gap-2 px-5'>
+          <p className='mb-2 text-3xl font-medium'>Freedom to Travel</p>
+          <p className='text-sm lg:text-lg'>
+            Enter a destination on your touchscreen and Trip Planner will
+            automatically calculate your route with Superchargers along the way.
+          </p>
+        </div>
+        <CarDetailsCarousel carouselData={travelImages} type={'images'} />
+        <div className='flex w-fit self-center '>
+          <SecondaryButton theme={'light'} heading={'Learn more'} />
+        </div>
+      </div>
+
+      <div className='py-10'>
+        <CarDetailsSection
+          backgroundColor={'bg-white'}
+          textColor={'text-black'}
+          title={'Safety'}
+          heading={'High Impact Protection'}
+          description={
+            <>
+              <p>
+                Safety is the most important part of every Tesla. We design our
+                vehicles to exceed <u>safety standards</u>.
+              </p>
+              <br />
+              <p>
+                <strong>5-Star Rating and Best in Class Safety</strong>
+                <br />
+                Model S achieved a 2022 5-star Euro NCAP safety rating and won
+                the Best in Class awards in the Executive and Pure Electric
+                categories.
+              </p>
+            </>
+          }
+          buttonTheme={'light'}
+          showTertiaryButton={false}
+        />
+      </div>
+
+      <div className='flex w-full flex-col'>
+        <CarDetailsBackgroundContent
+          data={data}
+          backgroundImageSource={plaidAutopilotImage}
+          backgroundVideoSource={null}
+          heading={null}
+          paragraph={null}
+          showButton={false}
+          firstStat={'360\u00B0'}
+          secondStat={'250m'}
+          thirdStat={<FaSmileWink />}
+          firstStatParagraph={'Degrees of Visibility'}
+          secondStatParagraph={'of Powerful visual processing'}
+          thirdStatParagraph={'Tesla Vision'}
+          contentHeight={'h-[80vh]'}
+          buttonType={null}
+        />
+      </div>
+
+      <div className='py-10'>
+        <CarDetailsSection
+          backgroundColor={'bg-white'}
+          textColor={'text-black'}
+          title={'Autopilot'}
+          heading={'Future of Driving'}
+          description={
+            'Autopilot enables your car to steer, accelerate and brake automatically within its lane under your active supervision, assisting with the most burdensome parts of driving. With over-the-air software updates, the latest enhancements are available instantly.'
+          }
+          buttonTheme={'light'}
+          showTertiaryButton={false}
+        />
+      </div>
+
+      <div className='flex flex-col bg-white py-12 min-[900px]:px-28 lg:px-36'>
+        <div className='mb-10 flex flex-col gap-2 px-5'>
+          <p className='mb-2 text-3xl font-medium '>Features</p>
+          <p className='text-sm lg:text-lg'>
+            Full Self-Driving capability introduces additional features and
+            improves existing functionality to make your car more capable over
+            time including:
+          </p>
+        </div>
+        <CarDetailsCarousel
+          carouselData={autopilotFeaturesVideos}
+          type={'videos'}
+        />
+      </div>
+
+      <SpecificationsShowcase />
     </>
   );
 }
 
 export default CarDetails;
-
-
-
-
-
