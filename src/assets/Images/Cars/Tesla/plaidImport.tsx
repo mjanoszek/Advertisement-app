@@ -53,3 +53,7 @@ export { default as plaidAutopark } from './plaidAutopark.mp4';
 export { default as plaidLaneChange } from './plaidLaneChange.mp4';
 export { default as plaidNavigateAutopilot } from './plaidNavigateAutopilot.mp4';
 export { default as plaidSummon } from './plaidSummon.mp4';
+
+
+
+export { default as modelS } from './models.jpeg';

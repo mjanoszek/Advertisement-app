@@ -48,6 +48,7 @@ import {
   plaidLaneChange,
   plaidNavigateAutopilot,
   plaidSummon,
+  modelS,
 } from '../../assets/Images/Cars/Tesla/plaidImport';
 import CarDetailsAnimation from './CarDetailsAnimation/CarDetailsAnimation';
 import CarDetailsVideoCarousel from './CarDetailsVideoCarousel/CarDetailsVideoCarousel';
@@ -58,6 +59,7 @@ import CarDetailsTextAnimation from './CarDetailsTextAnimation/CarDetailsTextAni
 import SecondaryButton from './CarDetailsButtons/SecondaryButton';
 import { FaSmileWink } from 'react-icons/fa';
 import SpecificationsShowcase from './SpecificationsShowcase/SpecificationsShowcase';
+import PrimaryButton from './CarDetailsButtons/PrimaryButton';
 
 interface CarDetailsProps {
   data: {
@@ -222,7 +224,7 @@ function CarDetails({ data }: CarDetailsProps) {
         <div className='flex h-full flex-col self-center text-center '>
           <CarDetailsVideoCarousel videoData={teslaVideosData} />
 
-          <div className='flex flex-col gap-14 bg-black pt-24 min-[600px]:gap-6'>
+          <div className='flex flex-col gap-14 bg-black pt-24 min-[600px]:gap-6 min-[900px]:px-28 lg:px-36'>
             <CarDetailsAnimation
               imageSrc={stayConnectedImage}
               heading='Stay Connected'
@@ -304,7 +306,7 @@ function CarDetails({ data }: CarDetailsProps) {
         className='shadow-[inset 0 -360px max(69px, 5vh) 0  rgba(0, 0, 0, 0.6)] flex h-[65vh] flex-col justify-center bg-cover bg-center'
         style={{ backgroundImage: `url(${plaidBackground3})` }}
       ></div>
-      <div className='flex flex-col'>
+      <div className='relative flex flex-col justify-center bg-black text-white'>
         <CarDetailsSection
           backgroundColor={'bg-black'}
           textColor={'text-white'}
@@ -316,36 +318,33 @@ function CarDetails({ data }: CarDetailsProps) {
           buttonTheme={'dark'}
           showTertiaryButton={false}
         />
+        <div className='flex flex-col gap-14 bg-black pt-24 min-[600px]:gap-6 min-[900px]:px-28 lg:px-36'>
+          <CarDetailsAnimation
+            imageSrc={plaidWheelsImage}
+            heading='Relentless Performance'
+            paragraph='Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road.'
+            showVideo={false}
+            videoUrl={null}
+            isReversed={false}
+          />
 
-        <div className='relative flex flex-col justify-center bg-black text-white'>
-          <div className='flex flex-col gap-14 bg-black pt-24 min-[600px]:gap-6'>
-            <CarDetailsAnimation
-              imageSrc={plaidWheelsImage}
-              heading='Relentless Performance'
-              paragraph='Staggered, performance wheels and tires keep the car planted and help transfer maximum power down to the road.'
-              showVideo={false}
-              videoUrl={null}
-              isReversed={false}
-            />
+          <CarDetailsAnimation
+            imageSrc={plaidAerodynamicsImage}
+            heading='Optimized Aerodynamics'
+            paragraph='Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth.'
+            showVideo={false}
+            videoUrl={null}
+            isReversed={true}
+          />
 
-            <CarDetailsAnimation
-              imageSrc={plaidAerodynamicsImage}
-              heading='Optimized Aerodynamics'
-              paragraph='Attention to detail on all exterior surfaces makes Model S the most aerodynamic production car on Earth.'
-              showVideo={false}
-              videoUrl={null}
-              isReversed={true}
-            />
-
-            <CarDetailsAnimation
-              imageSrc={plaidStyleImage}
-              heading='Refined Styling'
-              paragraph='An iconic silhouette meets refreshed, elegant proportions.'
-              showVideo={false}
-              videoUrl={null}
-              isReversed={false}
-            />
-          </div>
+          <CarDetailsAnimation
+            imageSrc={plaidStyleImage}
+            heading='Refined Styling'
+            paragraph='An iconic silhouette meets refreshed, elegant proportions.'
+            showVideo={false}
+            videoUrl={null}
+            isReversed={false}
+          />
         </div>
       </div>
 
@@ -470,8 +469,21 @@ function CarDetails({ data }: CarDetailsProps) {
           type={'videos'}
         />
       </div>
+      <div className='bg-black py-24'>
+        <SpecificationsShowcase />
+      </div>
 
-      <SpecificationsShowcase />
+      <div className='w-full bg-white py-24 min-[900px]:px-28 lg:px-36'>
+        <div className='min-[900px]:gap-24 min-[900px]:text-start flex flex-col items-center gap-5 px-5 text-center min-[900px]:flex-row'>
+          <div className='flex flex-col gap-2'>
+            <p className='text-xl font-bold'>Model S</p>
+            <PrimaryButton />
+          </div>
+          <div className='flex'>
+            <img src={modelS} alt='' />
+          </div>
+        </div>
+      </div>
     </>
   );
 }
