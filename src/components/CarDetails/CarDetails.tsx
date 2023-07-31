@@ -475,12 +475,12 @@ function CarDetails({ data }: CarDetailsProps) {
 
       <div className='w-full bg-white py-24 min-[900px]:px-28 lg:px-36'>
         <div className='min-[900px]:gap-24 min-[900px]:text-start flex flex-col items-center gap-5 px-5 text-center min-[900px]:flex-row'>
-          <div className='flex flex-col gap-2'>
+          <div className='flex flex-col gap-2 w-1/3'>
             <p className='text-xl font-bold'>Model S</p>
             <PrimaryButton />
           </div>
-          <div className='flex'>
-            <img src={modelS} alt='' />
+          <div className='flex w-2/3 '>
+            <img src={modelS} alt='Model S' />
           </div>
         </div>
       </div>
