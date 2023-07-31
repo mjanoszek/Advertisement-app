@@ -43,7 +43,7 @@ const CarDetailsAnimation = ({
               : isReversed
               ? 'flex-row'
               : 'flex-row-reverse'
-          } gap-4 min-[900px]:px-28 lg:px-72`}
+          } gap-4 `}
         >
           <div className='flex flex-1'>
             <motion.div
@@ -81,7 +81,7 @@ const CarDetailsAnimation = ({
               : isReversed
               ? 'flex-row'
               : 'flex-row-reverse'
-          } w-full gap-4 min-[900px]:px-28 lg:px-72`}
+          } w-full gap-4 `}
         >
           <div className='flex flex-1'>
             <motion.img

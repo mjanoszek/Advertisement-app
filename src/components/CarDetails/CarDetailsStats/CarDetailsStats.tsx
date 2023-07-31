@@ -9,7 +9,7 @@ function CarDetailsStats({ heading, paragraph }: CarDetailsStatsProps) {
   return (
     <div className='flex flex-col items-center justify-center gap-2 '>
       {typeof heading === 'string' ? (
-        <p className='text-base font-medium min-[600px]:text-2xl min-[900px]:text-xl'>
+        <p className='text-base font-medium min-[600px]:text-2xl min-[900px]:text-xl xl:text-2xl'>
           {heading}
         </p>
       ) : (

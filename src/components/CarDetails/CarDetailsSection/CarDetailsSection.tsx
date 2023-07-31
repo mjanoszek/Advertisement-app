@@ -41,7 +41,7 @@ function CarDetailsSection({
         <div className='flex flex-row items-center'>
           <div className='flex flex-1 flex-col '>
             <p className='text-xl'>{title}</p>
-            <p className='mb-5 text-3xl font-medium'>{heading}</p>
+            <p className='mb-5 text-2xl font-medium'>{heading}</p>
             <div className='flex w-fit flex-col'>
               <SecondaryButton theme={buttonTheme} heading={'Order now'} />
               {showTertiaryButton && <TertiaryButton />}
