@@ -42,7 +42,7 @@ export const Slider = ({ image, isMobile }: SliderProps) => {
   };
 
   return (
-    <div className='relative mb-16 flex-wrap min-[360px]:mb-20 lg:mb-28 '>
+    <div className='min-[360px]:mb-20 relative mb-16 flex-wrap lg:mb-28 '>
       <div className='relative flex items-center justify-center px-2 '>
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
@@ -53,9 +53,13 @@ export const Slider = ({ image, isMobile }: SliderProps) => {
             initial='enter'
             animate='center'
             exit='exit'
-            className={`absolute rounded-t-md
-              shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]
-              `}
+            className={`absolute rounded-t-md shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]`}
+            style={{
+              width: '100%',
+              height: '100%',
+              minHeight: '200px',
+              objectFit: 'cover',
+            }}
             transition={{
               x: { type: 'spring', stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
@@ -77,15 +81,6 @@ export const Slider = ({ image, isMobile }: SliderProps) => {
 
         <div className='z-10 flex h-full w-full justify-between  '>
           <div className='flex h-full flex-col '>
-            {/* <div className=" bg-white rounded-full w-10 h-10 top-0 flex justify-center items-center select-none cursor-pointer font-bold text-lg z-10 left-3 transform scale-x-[-1] " onClick={(e) =>  {
-              e.preventDefault();
-              paginate(1);
-            }}
-
-            >
-              {'up'}
-            </div> */}
-
             <div
               className=' left-3 z-10 flex h-10 w-10 scale-x-[-1] transform cursor-pointer select-none items-center justify-center rounded-full bg-white text-lg font-bold '
               onClick={(e) => {
