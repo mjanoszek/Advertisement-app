@@ -2,6 +2,8 @@ import React from 'react';
 import { PropertyList } from '../../data/PropertyList';
 import { CarsList } from '../../data/CarsList';
 import { FaBed, FaBath } from 'react-icons/fa';
+import { BsSpeedometer } from 'react-icons/bs';
+import { PiEngineBold, PiTimerBold } from 'react-icons/pi';
 import { SlSizeFullscreen } from 'react-icons/sl';
 import { Slider } from '../Slider/Slider';
 import { Link } from 'react-router-dom';
@@ -24,7 +26,7 @@ function AdvertisementDetail({ advertisementType }: AdvertisementDetailProps) {
           >
             <Slider image={item.images} isMobile={isMobile} />
             <div className='items-start  justify-between gap-5 px-3 sm:flex sm:flex-col'>
-              <p className='text-base max-[375px]:text-sm'>{item.title}</p>
+              <p className='max-[375px]:text-sm text-base'>{item.title}</p>
               <div className='flex flex-col'>
                 <p className='font-bold'>{item.price}</p>
                 <p className='flex gap-2'>
@@ -63,15 +65,15 @@ function AdvertisementDetail({ advertisementType }: AdvertisementDetailProps) {
               </p>
               <div className='flex flex-col'>
                 <p className='flex gap-2'>
-                  <FaBed />
+                  <BsSpeedometer />
                   {item.topSpeed}
                 </p>
                 <p className='flex gap-2'>
-                  <FaBath />
+                  <PiEngineBold />
                   {item.power}
                 </p>
                 <p className='flex gap-2'>
-                  <SlSizeFullscreen />
+                  <PiTimerBold />
                   {item.ZeroToHundred}
                 </p>
                 <hr className='my-2' />
