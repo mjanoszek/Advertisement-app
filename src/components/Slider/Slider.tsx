@@ -5,6 +5,7 @@ import { wrap } from 'popmotion';
 interface SliderProps {
   image: string[];
   isMobile: boolean;
+  isInMenu: boolean;
 }
 
 const variants = {
@@ -32,7 +33,7 @@ const swipePower = (offset: number, velocity: number) => {
   return Math.abs(offset) * velocity;
 };
 
-export const Slider = ({ image, isMobile }: SliderProps) => {
+export const Slider = ({ image, isMobile, isInMenu }: SliderProps) => {
   const [[page, direction], setPage] = useState([0, 0]);
   const imageSource = image;
   const imageIndex = wrap(0, imageSource.length, page);
@@ -54,12 +55,14 @@ export const Slider = ({ image, isMobile }: SliderProps) => {
             animate='center'
             exit='exit'
             className={`absolute rounded-t-md shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]`}
-            style={{
-              width: '100%',
-              height: '100%',
-              minHeight: '200px',
-              objectFit: 'cover',
-            }}
+            style={
+              isInMenu && {
+                width: '100%',
+                height: '100%',
+                minHeight: '200px',
+                objectFit: 'cover',
+              }
+            }
             transition={{
               x: { type: 'spring', stiffness: 300, damping: 30 },
               opacity: { duration: 0.2 },
