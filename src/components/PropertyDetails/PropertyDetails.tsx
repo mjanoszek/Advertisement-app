@@ -57,11 +57,11 @@ function PropertyDetails({ data }) {
 
   return (
     <>
-      {!isMobile && <Navbar isAbsolute={false} />}
-      <div className='flex h-screen items-start justify-center pt-[20vw]  lg:px-14 '>
+      <Navbar isAbsolute={false} />
+      <div className='flex h-screen items-start justify-center pt-[22vw] lg:px-14 '>
         <div className='flex w-screen flex-col items-center justify-center lg:mt-10 lg:items-start xl:mt-16 xl:w-screen'>
           <div className='w-screen min-[500px]:mb-10 lg:mb-32 xl:mb-24'>
-            <Slider image={data.images} isLarge={true} isMobile={isMobile} />
+            <Slider image={data.images} isMobile={isMobile} isInMenu={false} />
           </div>
 
           <div className='z-20 mx-2 mb-12 mt-[10vw] flex gap-5 self-center max-md:flex-col md:mx-8 lg:mt-[5vw] xl:mx-16 xl:mt-[12vw] 2xl:mt-[15vw]'>
