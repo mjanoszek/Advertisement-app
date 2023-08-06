@@ -43,7 +43,7 @@ export const Slider = ({ image, isMobile, isInMenu }: SliderProps) => {
   };
 
   return (
-    <div className='min-[360px]:mb-20 relative mb-16 flex-wrap lg:mb-28 '>
+    <div className='relative mb-16 flex-wrap min-[360px]:mb-20 lg:mb-28 '>
       <div className='relative flex items-center justify-center px-2 '>
         <AnimatePresence initial={false} custom={direction}>
           <motion.img
@@ -54,7 +54,9 @@ export const Slider = ({ image, isMobile, isInMenu }: SliderProps) => {
             initial='enter'
             animate='center'
             exit='exit'
-            className={`absolute rounded-t-md shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]`}
+            className={`absolute ${
+              isInMenu && 'rounded-t-md'
+            } shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]`}
             style={
               isInMenu && {
                 width: '100%',
