@@ -5,8 +5,13 @@ import { FaBath } from 'react-icons/fa';
 import { SlSizeFullscreen } from 'react-icons/sl';
 import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Navbar/Navbar';
+import { PropertyItem } from '../../types/PropertyItem';
 
-function PropertyDetails({ data }) {
+interface PropertyDetailsProps {
+  data: PropertyItem;
+}
+
+function PropertyDetails({ data }: PropertyDetailsProps) {
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => setShowMore(!showMore);

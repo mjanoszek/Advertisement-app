@@ -8,19 +8,9 @@ import illinoisHouse from '../assets/Images/Properties/illinois/illinois1.jpeg';
 import { illinois } from '../assets/Images/Properties/Illinois/illinois';
 import nycHouse from '../assets/Images/Properties/NYC/nyc1.jpeg';
 import { nyc } from '../assets/Images/Properties/NYC/nyc';
+import { PropertyItem } from '../types/PropertyItem';
 
-interface PropertyItem {
-  propertyID: number;
-  title: string;
-  image: string;
-  location: string;
-  price: string;
-  description: string;
-  beds: string;
-  baths: string;
-  area: string;
-  images: string[];
-}
+
 
 export const PropertyList: PropertyItem[] = [
   {

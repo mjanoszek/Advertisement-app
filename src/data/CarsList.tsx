@@ -1,21 +1,10 @@
 import plaidImage from '../assets/Images/Cars/Tesla/plaid3.jpeg';
 import { plaidMobile } from '../assets/Images/Cars/Tesla/plaidMobile';
+import { CarItem } from '../types/CarItem';
 
-interface CarsItem {
-  carID: number;
-  title: string;
-  image: string;
-  price: string;
-  description: string;
-  topSpeed: string;
-  power: string;
-  range?: string;
-  ZeroToHundred: string;
-  yearOfManufacture: string;
-  images: string[];
-}
 
-export const CarsList: CarsItem[] = [
+
+export const CarsList: CarItem[] = [
   {
     carID: 1,
     title: 'Tesla Model S',

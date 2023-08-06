@@ -1,17 +1,7 @@
 import { submarinerImages } from '../assets/Images/Watches/Submariner/submariner';
 import submariner from '../assets/Images/Watches/Submariner/submariner3.jpeg';
+import { WatchItem } from '../types/WatchItem';
 
-interface WatchItem {
-  watchID: number;
-  title: string;
-  image: string;
-  price: string;
-  waterResistance: string;
-  diameter: string;
-  material: string;
-  description: string;
-  images: string[];
-}
 
 export const WatchesList: WatchItem[] = [
   {

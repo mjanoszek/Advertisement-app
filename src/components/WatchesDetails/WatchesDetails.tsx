@@ -7,8 +7,13 @@ import { useMediaQuery } from 'react-responsive';
 import Navbar from '../Navbar/Navbar';
 import { PiCircleHalfTiltFill } from 'react-icons/pi';
 import { MdWatch } from 'react-icons/md';
+import { WatchItem } from '../../types/WatchItem';
 
-function WatchesDetails({ data }: any) {
+interface WatchesDetailsProps {
+  data: WatchItem;
+}
+
+function WatchesDetails({ data }: WatchesDetailsProps) {
   const [showMore, setShowMore] = useState(false);
 
   const toggleShowMore = () => setShowMore(!showMore);
@@ -35,7 +40,6 @@ function WatchesDetails({ data }: any) {
   );
 
   const isMobile = useMediaQuery({ maxWidth: 768 });
-  console.log(data);
 
   return (
     <>
@@ -48,7 +52,6 @@ function WatchesDetails({ data }: any) {
 
           <div className='z-20 mx-2 mb-12 mt-[10vw] flex gap-5 self-center max-md:flex-col md:mx-8 lg:mt-[5vw] xl:mx-16 xl:mt-[12vw] 2xl:mt-[15vw]'>
             <div className='flex flex-col gap-2 self-start lg:w-5/6'>
-              <p className='text-xl xl:text-2xl'>{data.location}</p>
               <p className='font-medium xl:text-xl'>For Sale</p>
               <p className=' font-medium md:text-lg lg:text-xl xl:text-2xl'>
                 {data.price}
