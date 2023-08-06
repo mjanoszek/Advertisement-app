@@ -21,6 +21,7 @@ function App() {
         <Route path='/Properties/:propertyID' element={<ProductProfile />} />
         <Route path='/PrivateJets' element={<PrivateJets />} />
         <Route path='/Watches' element={<Watches />} />
+        <Route path='/Watches/:watchID' element={<ProductProfile />} />
         <Route path='/Cars' element={<Cars />} />
         <Route path='/Cars/:carID' element={<ProductProfile />} />
         <Route path='*' element={<NotFound />} />
