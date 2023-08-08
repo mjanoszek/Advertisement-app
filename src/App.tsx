@@ -20,6 +20,7 @@ function App() {
         <Route path='/Properties' element={<Properties />} />
         <Route path='/Properties/:propertyID' element={<ProductProfile />} />
         <Route path='/PrivateJets' element={<PrivateJets />} />
+        <Route path='/PrivateJets/:jetID' element={<PrivateJets />} />
         <Route path='/Watches' element={<Watches />} />
         <Route path='/Watches/:watchID' element={<ProductProfile />} />
         <Route path='/Cars' element={<Cars />} />
