@@ -6,7 +6,7 @@ export interface CarItem {
   description: string;
   topSpeed: string;
   power: string;
-  range?: string;
+  range: string;
   ZeroToHundred: string;
   yearOfManufacture: string;
   images: string[];
