@@ -1,4 +1,5 @@
 export interface WatchItem {
+  location: string;
   watchID: number;
   title: string;
   image: string;

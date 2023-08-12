@@ -1,4 +1,5 @@
 export interface JetItem {
+  location: string;
   jetID: number;
   title: string;
   image: string;
