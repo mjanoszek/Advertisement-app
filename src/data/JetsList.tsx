@@ -10,6 +10,7 @@ export const JetsList: JetItem[] = [
     images: gulfImages,
     maxSpeed: '1,133 km/h',
     range: '12.964 km',
+    location: 'JFK Access Rd, Jamaica, NY 11430, USA',
     engine: '2 x Rolls-Royce BR725',
     price: 'From $68,500,000',
     description:
