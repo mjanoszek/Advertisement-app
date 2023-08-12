@@ -12,48 +12,25 @@ interface ProductDetailsProps {
     images: string[];
     price: string;
     description: string;
-    baths: string;
-    beds: string;
-    area: string;
-    diameter: string;
-    waterResistance: string;
-    material: string;
-    maxSpeed: string;
-    range: string;
-    engine: string;
+    baths?: string;
+    beds?: string;
+    area?: string;
+    diameter?: string;
+    waterResistance?: string;
+    material?: string;
+    maxSpeed?: string;
+    range?: string;
+    engine?: string;
   };
   productCategory: 'Property' | 'Watch' | 'Jet';
 }
 
 function ProductDetails({ data, productCategory }: ProductDetailsProps) {
-  const [showMore, setShowMore] = useState(false);
-
-  const toggleShowMore = () => setShowMore(!showMore);
-
-  const fullText =
-    'By submitting an email through this form, you represent and warrant that you have obtained all necessary consents, approvals, and authorizations from any third parties whose personal information or other sensitive data you may include in your message. You further agree to use this form only for lawful purposes and not to send any unsolicited or unauthorized commercial messages or spam. You acknowledge that the transmission of any information through this form is at your own risk and that you are solely responsible for any consequences or damages that may arise from such transmission';
-
-  const truncatedText = (
-    <p className='text-xs'>
-      {fullText.slice(0, 100)}...{' '}
-      <span onClick={toggleShowMore} className='text-blue-700'>
-        Read more
-      </span>
-    </p>
-  );
-
-  const textToShow = (
-    <p className='text-xs'>
-      {fullText}{' '}
-      <span onClick={toggleShowMore} className='text-blue-700'>
-        Read less
-      </span>
-    </p>
-  );
-
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
-  const { latitude, longitude } = useGeoLocation({ location: data.location });
+  const { latitude, longitude } = useGeoLocation({
+    location: data.location,
+  });
 
   return (
     <>
