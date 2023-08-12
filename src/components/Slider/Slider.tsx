@@ -54,7 +54,7 @@ export const Slider = ({ image, isMobile, isInMenu }: SliderProps) => {
             initial='enter'
             animate='center'
             exit='exit'
-            className={`absolute ${
+            className={`absolute min-w-full ${
               isInMenu && 'rounded-t-md'
             } shadow-[rgba(13,_38,_76,_0.19)_0px_9px_20px]`}
             style={
