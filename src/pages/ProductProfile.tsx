@@ -3,11 +3,9 @@ import { useParams } from 'react-router-dom';
 import { getPropertyById } from '../data/PropertyList';
 import { getCarById } from '../data/CarsList';
 import { getWatchById } from '../data/WatchesList';
-import PropertyDetails from '../components/PropertyDetails/PropertyDetails';
+import ProductDetails from '../components/ProductDetails/ProductDetails';
 import CarDetails from '../components/CarDetails/CarDetails';
-import WatchesDetails from '../components/WatchesDetails/WatchesDetails';
 import { getJetById } from '../data/JetsList';
-import JetsDetails from '../components/JetsDetails/JetsDetails';
 import { PropertyItem } from '../types/PropertyItem';
 import { CarItem } from '../types/CarItem';
 import { WatchItem } from '../types/WatchItem';
@@ -34,10 +32,22 @@ function ProductProfile() {
     <>
       {data && (
         <>
-          {propertyID && <PropertyDetails data={data as PropertyItem} />}
+          {propertyID && (
+            <ProductDetails
+              data={data as PropertyItem}
+              productCategory={'Property'}
+            />
+          )}
           {carID && <CarDetails data={data as CarItem} />}
-          {watchID && <WatchesDetails data={data as WatchItem} />}
-          {jetID && <JetsDetails data={data as JetItem} />}
+          {watchID && (
+            <ProductDetails
+              data={data as WatchItem}
+              productCategory={'Watch'}
+            />
+          )}
+          {jetID && (
+            <ProductDetails data={data as JetItem} productCategory={'Jet'} />
+          )}
         </>
       )}
     </>
