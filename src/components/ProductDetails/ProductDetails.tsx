@@ -35,7 +35,7 @@ function ProductDetails({ data, productCategory }: ProductDetailsProps) {
   return (
     <>
       <Navbar isAbsolute={false} />
-      <div className='flex h-screen items-start justify-center pt-[22vw] lg:px-14 '>
+      <div className='flex h-screen items-start justify-center pt-[20vw] sm:pt-[22vw] md:pt-[24vw] lg:pt-[20vw] lg:px-14 '>
         <div className='flex w-screen flex-col items-center justify-center lg:mt-10 lg:items-start xl:mt-16 xl:w-screen'>
           <div className='w-screen min-[500px]:mb-10 lg:mb-32 xl:mb-24'>
             <Slider image={data.images} isMobile={isMobile} isInMenu={false} />
