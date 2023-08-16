@@ -4,13 +4,11 @@ import virginiaHouse from '../assets/Images/Properties/Virginia/virginia1.jpeg';
 import { virginia } from '../assets/Images/Properties/Virginia/virginia';
 import montanaHouse from '../assets/Images/Properties/Montana/montana1.jpeg';
 import { montana } from '../assets/Images/Properties/Montana/montana';
-import illinoisHouse from '../assets/Images/Properties/illinois/illinois1.jpeg';
+import illinoisHouse from '../assets/Images/Properties/Illinois/illinois1.jpeg';
 import { illinois } from '../assets/Images/Properties/Illinois/illinois';
 import nycHouse from '../assets/Images/Properties/NYC/nyc1.jpeg';
 import { nyc } from '../assets/Images/Properties/NYC/nyc';
 import { PropertyItem } from '../types/PropertyItem';
-
-
 
 export const PropertyList: PropertyItem[] = [
   {
