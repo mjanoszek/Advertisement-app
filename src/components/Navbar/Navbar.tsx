@@ -13,7 +13,10 @@ function Navbar({ isAbsolute }: NavbarProps) {
       } flex min-w-full items-center p-5 `}
     >
       <Link to='/'>
-        <h1 className='text-xl font-medium tracking-wider sm:text-3xl'> XYZ</h1>
+        <h1 className='text-xl font-medium tracking-wider sm:text-3xl'>
+          {' '}
+          LUSSO
+        </h1>
       </Link>
 
       <div className='xs:gap-5 flex w-full justify-end gap-5 md:gap-20 '>
