@@ -35,13 +35,13 @@ function ProductDetails({ data, productCategory }: ProductDetailsProps) {
   return (
     <>
       <Navbar isAbsolute={false} />
-      <div className='flex h-screen items-start justify-center pt-[20vw] sm:pt-[22vw] md:pt-[24vw] lg:pt-[20vw] 2xl:pt-[22vw] lg:px-14 '>
+      <div className='min-[2560px]:pt-[22vw] flex h-screen items-start justify-center pt-[20vw] sm:pt-[22vw] md:pt-[23vw] lg:px-14 lg:pt-[20vw] 2xl:pt-[21vw] '>
         <div className='flex w-screen flex-col items-center justify-center lg:mt-10 lg:items-start xl:mt-16 xl:w-screen'>
           <div className='w-screen min-[500px]:mb-10 lg:mb-32 xl:mb-24'>
             <Slider image={data.images} isMobile={isMobile} isInMenu={false} />
           </div>
 
-          <div className='z-20 mx-2 mb-12 mt-[10vw] flex gap-5 self-center max-md:flex-col md:mx-8 lg:mt-[5vw] xl:mx-16 xl:mt-[12vw] 2xl:mt-[17vw]'>
+          <div className='z-20 mx-2 mb-12 mt-[12vw] flex gap-5 self-center max-md:flex-col md:mx-8 lg:mt-[5vw] xl:mx-16 xl:mt-[12vw] 2xl:mt-[17vw]'>
             <div className='flex flex-col gap-2 self-start lg:w-5/6'>
               <p className='text-xl xl:text-2xl'>{data.location}</p>
               <p className='font-medium xl:text-xl'>For Sale</p>
