@@ -5,6 +5,7 @@
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
+    "typeRoots": ["./node_modules/@types"],
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
@@ -16,10 +17,9 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-    "include": ["src", "vite.config.ts", "prettier.config.js"],
-    "references": [{ "path": "./tsconfig.node.json" }],
-    "parserOptions": {
+  "include": ["src", "vite.config.ts", "prettier.config.js"],
+  "references": [{ "path": "./tsconfig.node.json" }],
+  "parserOptions": {
     "project": "./tsconfig.eslint.json"
-}
-
+  }
 }
