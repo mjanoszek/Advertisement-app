@@ -128,3 +128,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+.vercel
+
+# Exclude _metadata.json and .DS_Store
+_metadata.json
+.DS_Store
